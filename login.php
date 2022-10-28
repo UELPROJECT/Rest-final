@@ -80,8 +80,12 @@ if(isset($_POST['submit']))
 	
 	                        if(is_array($row)) 
 								{
-                                    	$_SESSION["user_id"] = $row['u_id']; 
-										 header("refresh:1;url=index.php"); 
+                                    	$_SESSION["user_id"] = $row['u_id'];
+                                        // $_SESSION["name"]=$username;
+                                        $_SESSION["name"] = $row['f_name'];
+										 header("refresh:1;url=index.php");
+                                        
+
 	                            } 
 							else
 							    {
@@ -154,8 +158,8 @@ if(isset($_POST['submit']))
                         </div>
                         <div class="col-xs-12 col-sm-4 address color-gray">
                             <h5>Address</h5>
-                            <p>213, Raheja Chambers, Free Press Journal Road, Nariman Point, Mumbai, Maharashtra 400021, India</p>
-                            <h5>Phone: +91 8093424562</a></h5> </div>
+                            <p>PROJECT DONE BY 4 MEMBER</p>
+                            <h5></a></h5> </div>
                         <div class="col-xs-12 col-sm-5 additional-info color-gray">
                             <h5>Addition informations</h5>
                            <p>Join thousands of other restaurants who benefit from having partnered with us.</p>

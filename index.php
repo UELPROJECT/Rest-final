@@ -39,12 +39,13 @@ session_start();
 								echo '<li class="nav-item"><a href="login.php" class="nav-link active">Login</a> </li>
 							  <li class="nav-item"><a href="registration.php" class="nav-link active">Signup</a> </li>';
 							}
-						else
+						else if (isset($_SESSION["name"]))
 							{
-
+                                
 									
 									echo  '<li class="nav-item"><a href="your_orders.php" class="nav-link active">Your Orders</a> </li>';
 									echo  '<li class="nav-item"><a href="logout.php" class="nav-link active">Logout</a> </li>';
+                                    echo  '<li class="nav-item"><p style="color:white">'.$_SESSION["name"].'</p></li>';
 							}
 
 						?>
