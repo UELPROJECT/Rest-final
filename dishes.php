@@ -30,7 +30,7 @@ include_once 'product-action.php';
             <nav class="navbar navbar-dark">
                 <div class="container">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                    <a class="navbar-brand" href="index.php"> <img class="img-rounded" src="images/food-mania-logo.png" alt=""> </a>
+                    <a class="navbar-brand" href="index.php"> WALK N EAT </a>
                     <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
                        <ul class="nav navbar-nav">
                             <li class="nav-item"> <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
@@ -48,6 +48,7 @@ include_once 'product-action.php';
 									
 										echo  '<li class="nav-item"><a href="your_orders.php" class="nav-link active">Your Orders</a> </li>';
 									echo  '<li class="nav-item"><a href="logout.php" class="nav-link active">Logout</a> </li>';
+                                    echo  '<li class="nav-item"><p style="color:#6699ff;font-size:21px;margin-top:3px;">'.$_SESSION["name"].'</p></li>';
 							}
 
 						?>
@@ -63,8 +64,9 @@ include_once 'product-action.php';
                     <ul class="row links">
                       
                         <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Restaurant</a></li>
-                        <li class="col-xs-12 col-sm-4 link-item active"><span>2</span><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>">Pick Your favorite food</a></li>
-                        <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item"><span>2</span><a href="#">BOOK A TABLE</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item active"><span>3</span><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>">Pick Your favorite food</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item"><span>4</span><a href="#">Order and Pay</a></li>
                         
                     </ul>
                 </div>
