@@ -1,0 +1,6 @@
+[2022-10-26 13:35:48.600] [main] [info] update#setState idle
+[2022-10-26 13:35:50.030] [main] [info] Starting extension host with pid 11139 (fork() took 8 ms).
+[2022-10-26 13:36:18.598] [main] [info] update#setState checking for updates
+[2022-10-26 13:36:18.625] [main] [info] update#setState idle
+[2022-10-26 13:36:53.945] [main] [info] Waiting for extension host with pid 11139 to exit.
+[2022-10-26 13:36:53.954] [main] [info] Extension host with pid 11139 exited with code: 0, signal: null.
