@@ -134,7 +134,7 @@ foreach ($_SESSION["cart_item"] as $item)
 										
                                         <div class="form-group row no-gutter">
                                             <div class="col-xs-8">
-                                                 <input type="text" class="form-control b-r-0" value=<?php echo "₹".$item["price"]; ?> readonly id="exampleSelect1">
+                                                 <input type="text" class="form-control b-r-0" value=<?php echo "£".$item["price"]; ?> readonly id="exampleSelect1">
                                                    
                                             </div>
                                             <div class="col-xs-4">
@@ -157,7 +157,7 @@ $item_total += ($item["price"]*$item["quantity"]);
                                 <div class="widget-body">
                                     <div class="price-wrap text-xs-center">
                                         <p>TOTAL</p>
-                                        <h3 class="value"><strong><?php echo "₹".$item_total; ?></strong></h3>
+                                        <h3 class="value"><strong><?php echo "£".$item_total; ?></strong></h3>
                                         <p>Free Delivery!!!</p>
                                         <?php
                                         if($item_total==0){
@@ -226,7 +226,9 @@ $item_total += ($item["price"]*$item["quantity"]);
                                         </div>
                                
                                         <div class="col-xs-12 col-sm-12 col-lg-4 pull-right item-cart-info"> 
-										<span class="price pull-left" >₹<?php echo $product['price']; ?></span>
+										<span class="price pull-left" >£<?php echo $product['price']; ?></span>
+                                          
+                                        
 										  <input class="b-r-0" type="text" name="quantity"  style="margin-left:30px;" value="1" size="2" />
 										  <input type="submit" class="btn theme-btn" style="margin-left:40px;" value="Add to cart" />
 										</div>
@@ -282,9 +284,9 @@ $item_total += ($item["price"]*$item["quantity"]);
                                     </ul>
                                 </div>
                                 <div class="col-xs-12 col-sm-4 address color-gray">
-                                    <h5>Address</h5>
-                                    <p>213, Raheja Chambers, Free Press Journal Road, Nariman Point, Mumbai, Maharashtra 400021, India</p>
-                                    <h5>Phone: +91 8093424562</a></h5> </div>
+                                    <h5>Group Project UEL</h5>
+                                    <p>Group Member are : Ravi ,Darsh ,Nerali and Arthai</p>
+                                    <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img style="heght: 20px;weight: 20px;" src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
                                    <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
@@ -301,139 +303,7 @@ $item_total += ($item["price"]*$item["quantity"]);
     </div>
 
  
-    <div class="modal fade" id="order-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <div class="modal-body cart-addon">
-                    <div class="food-item white">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-lg-6">
-                                <div class="item-img pull-left">
-                                    <a class="restaurant-logo pull-left" href="#"><img src="http://placehold.it/70x70" alt="Food logo"></a>
-                                </div>
-              
-                                <div class="rest-descr">
-                                    <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6> </div>
-               
-                            </div>
-           
-                            <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">₹ 2.99</span></div>
-                            <div class="col-xs-6 col-sm-4 col-lg-4">
-                                <div class="row no-gutter">
-                                    <div class="col-xs-7">
-                                        <select class="form-control b-r-0" id="exampleSelect2">
-                                            <option>Size SM</option>
-                                            <option>Size LG</option>
-                                            <option>Size XL</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <input class="form-control" type="number" value="0" id="quant-input-2"> </div>
-                                </div>
-                            </div>
-                        </div>
-               
-                    </div>
-              
-                    <div class="food-item">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-lg-6">
-                                <div class="item-img pull-left">
-                                    <a class="restaurant-logo pull-left" href="#"><img src="http://placehold.it/70x70" alt="Food logo"></a>
-                                </div>
-                    
-                                <div class="rest-descr">
-                                    <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6> </div>
-                
-                            </div>
-               
-                            <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">₹ 2.49</span></div>
-                            <div class="col-xs-6 col-sm-4 col-lg-4">
-                                <div class="row no-gutter">
-                                    <div class="col-xs-7">
-                                        <select class="form-control b-r-0" id="exampleSelect3">
-                                            <option>Size SM</option>
-                                            <option>Size LG</option>
-                                            <option>Size XL</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <input class="form-control" type="number" value="0" id="quant-input-3"> </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                    </div>
-            
-                    <div class="food-item">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-lg-6">
-                                <div class="item-img pull-left">
-                                    <a class="restaurant-logo pull-left" href="#"><img src="http://placehold.it/70x70" alt="Food logo"></a>
-                                </div>
-                       
-                                <div class="rest-descr">
-                                    <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6> </div>
-                 
-                            </div>
-                
-                            <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">₹ 1.99</span></div>
-                            <div class="col-xs-6 col-sm-4 col-lg-4">
-                                <div class="row no-gutter">
-                                    <div class="col-xs-7">
-                                        <select class="form-control b-r-0" id="exampleSelect5">
-                                            <option>Size SM</option>
-                                            <option>Size LG</option>
-                                            <option>Size XL</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <input class="form-control" type="number" value="0" id="quant-input-4"> </div>
-                                </div>
-                            </div>
-                        </div>
-                 
-                    </div>
-               
-                    <div class="food-item">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-lg-6">
-                                <div class="item-img pull-left">
-                                    <a class="restaurant-logo pull-left" href="#"><img src="http://placehold.it/70x70" alt="Food logo"></a>
-                                </div>
-                 
-                                <div class="rest-descr">
-                                    <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6> </div>
-                      
-                            </div>
-                       
-                            <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">₹ 3.15</span></div>
-                            <div class="col-xs-6 col-sm-4 col-lg-4">
-                                <div class="row no-gutter">
-                                    <div class="col-xs-7">
-                                        <select class="form-control b-r-0" id="exampleSelect6">
-                                            <option>Size SM</option>
-                                            <option>Size LG</option>
-                                            <option>Size XL</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <input class="form-control" type="number" value="0" id="quant-input-5"> </div>
-                                </div>
-                            </div>
-                        </div>
-           
-                    </div>
-             
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn theme-btn">Add to cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
  
     <script src="js/jquery.min.js"></script>
     <script src="js/tether.min.js"></script>

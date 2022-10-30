@@ -58,8 +58,10 @@ session_start();
                     <ul class="row links">
                        
                         <li class="col-xs-12 col-sm-4 link-item active"><span>1</span><a href="#">Choose Restaurant</a></li>
-                        <li class="col-xs-12 col-sm-4 link-item"><span>2</span><a href="#">Pick Your favorite food</a></li>
-                        <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item"><span>2</span><a href="#">Book Table</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Pick Your favorite food</a></li>
+                        
+                        <li class="col-xs-12 col-sm-4 link-item"><span>4</span><a href="#">Order/Dine In and Pay</a></li>
                     </ul>
                 </div>
             </div>
@@ -152,9 +154,9 @@ session_start();
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-4 address color-gray">
-                                    <h5>Address</h5>
-                                    <p>213, Raheja Chambers, Free Press Journal Road, Nariman Point, Mumbai, Maharashtra 400021, India</p>
-                                    <h5>Phone: +91 8093424562</a></h5> </div>
+                                    <h5>Group Project UEL</h5>
+                                    <p>Group Member are : Ravi ,Darsh ,Nerali and Arthai</p>
+                                    <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img style="heght: 20px;weight: 20px;" src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
                                    <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
