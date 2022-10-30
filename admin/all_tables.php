@@ -143,7 +143,7 @@ session_start();
                                                 </td>
                                                 <td>
                                                     <center>
-                                                        <select name="table_Add">
+                                                        <select name="table_Add[]">
                                                             <?php
                                                             for ($i = 0; $i <= 10; $i++) {
                                                                 echo '<option value=' . $i . '>' . $i . '</option>';
@@ -166,7 +166,7 @@ session_start();
 
                                                 <td>
                                                     <center>
-                                                        <select name="hotel">
+                                                        <select name="hotel[]">
                                                             <?php
                                                             $q1 = "SELECT * FROM restaurant";
                                                             $q2 = mysqli_query($db, $q1);
@@ -186,12 +186,12 @@ session_start();
                                             <tr>
                                                 <td colspan="2", rowspan="2">
                                                     <center>
-                                                        <button onclick="myFun()">ADD TABLE TO RESTAURANT</button>
-
-                                                    </center>
-                                                </td>
+                                                      
+                                                        <input type= "submit"  value="ADD TABLE TO RESTAURANT"></input>
+                                                                                                          </center>
+                                                </td>   
                                             </tr>
-                                            
+                                          
 
 
 
