@@ -286,7 +286,7 @@ $item_total += ($item["price"]*$item["quantity"]);
                                 <div class="col-xs-12 col-sm-4 address color-gray">
                                     <h5>Group Project UEL</h5>
                                     <p>Group Member are : Ravi ,Darsh ,Nerali and Arthai</p>
-                                    <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img style="heght: 20px;weight: 20px;" src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
+                                    <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img  src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
                                    <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
