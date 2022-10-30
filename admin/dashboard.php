@@ -182,7 +182,45 @@ else
                                 </div>
                             </div>
                         </div>
-                    </div>	                   
+                    </div>	
+                    
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-table f-s-40 "></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2><?php $sql="select * from table_reserve";
+												$result=mysqli_query($db,$sql); 
+                                                $rws=mysqli_num_rows($result);
+                                                
+                                                echo $rws;?></h2>
+                                <p class="m-b-0">Total Reserved Table till date</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-table f-s-40 "></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2><?php $sql="select * from table_reserve";
+												$result=mysqli_query($db,$sql); 
+                                                $rws=mysqli_num_rows($result);
+                                                
+                                                echo $rws;?></h2>
+                                <p class="m-b-0">Total table in All Hotels</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
                 </div>               
             </div>
         </div>     

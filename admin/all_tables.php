@@ -129,21 +129,14 @@ session_start();
                     <div class="col-lg-12">
                         <div class="card card-outline-primary">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white">All Orders</h4>
+                                <h4 class="m-b-0 text-white">Add Tables</h4>
                             </div>
                              
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>User</th>		
-                                                <th>Title</th>
-                                                <th>Quantity</th>
-                                                <th>Price</th>
-												<th>Address</th>
-												<th>Status</th>												
-												 <th>Reg-Date</th>
-												  <th>Action</th>
+                                              <td>  </td>
 												 
                                             </tr>
                                         </thead>
