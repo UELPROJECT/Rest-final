@@ -1,0 +1,11 @@
+I have added 2 table in database they are 
+
+
+ This is table one and other table is below
+CREATE TABLE table_total(tbl_id int(222),total_tbl int (222),rs_id int (222), PRIMARY KEY(tbl_id),FOREGIN KEY(rs_id) REFERENCES restaurant(rs_id));
+
+This is table 2
+
+CREATE  TABLE table_reserve(rsv_tbl_id int (222),username varchar (222),tbl_id int (222),rs_id int (222),PRIMARY KEY (rsv_tbl_id),FOREGIN KEY (tbl_id)REFERENCES table_total(tbl_id),FOREGIN KEY (rs_id) REFERENCES table_total(rs_id));
+
+This is second table for the database 
