@@ -91,6 +91,7 @@ else
                             </ul>
                         </li>
 						 <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li>
+                         <li> <a href="all_tables.php"><i class="fa fa-table" aria-hidden="true"></i><span>Table Booked</span></a></li>
                          
                     </ul>
                 </nav>

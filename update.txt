@@ -9,3 +9,8 @@ This is table 2
 CREATE  TABLE table_reserve(rsv_tbl_id int (222),username varchar (222),tbl_id int (222),rs_id int (222),PRIMARY KEY (rsv_tbl_id),FOREGIN KEY (tbl_id)REFERENCES table_total(tbl_id),FOREGIN KEY (rs_id) REFERENCES table_total(rs_id));
 
 This is second table for the database 
+
+
+Now I will add table data from the admin panel of the website and I will add the add table reserve page to the database with containg ecah restaurant atleast 8 table in it.
+
+
