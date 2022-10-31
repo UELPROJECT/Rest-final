@@ -8,7 +8,7 @@ session_start();
 ?>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X -UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
     <meta name="description" content="">
     <meta name="author" content="">
@@ -280,7 +280,7 @@ session_start();
                         </div>
                         <div class="col-xs-12 col-sm-4 address color-gray">
                                     <h5>Group Project University of East London</h5>
-                                    <p>Group Member are : Ravi, Darsh, Nirali and Aarthi</p>
+                                    <p>Group Member are : Ravi ,Darsh ,Nirali and Aarthi</p>
                                     <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img  src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
