@@ -63,9 +63,9 @@ include_once 'product-action.php';
                 <div class="container">
                     <ul class="row links">
                       
-                        <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Restaurant</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Restaurants</a></li>
                         <li class="col-xs-12 col-sm-4 link-item"><span>2</span><a href="#">BOOK A TABLE</a></li>
-                        <li class="col-xs-12 col-sm-4 link-item active"><span>3</span><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>">Pick Your favorite food</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item active"><span>3</span><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>">Pick Your favorite foods</a></li>
                         <li class="col-xs-12 col-sm-4 link-item"><span>4</span><a href="#">Order and Pay</a></li>
                         
                     </ul>
@@ -285,7 +285,7 @@ $item_total += ($item["price"]*$item["quantity"]);
                                 </div>
                                 <div class="col-xs-12 col-sm-4 address color-gray">
                                     <h5>Group Project UEL</h5>
-                                    <p>Group Member are : Ravi ,Darsh ,Nerali and Arthai</p>
+                                    <p>Group Member are : Ravi, Darsh, Nirali and Arthai</p>
                                     <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img  src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
