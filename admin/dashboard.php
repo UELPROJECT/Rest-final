@@ -209,11 +209,11 @@ else
                                     <span><i class="fa fa-table f-s-40 "></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2><?php $sql="select * from table_reserve";
+                                    <h2><?php $sql="SELECT * FROM total_tbl";
 												$result=mysqli_query($db,$sql); 
-                                                $rws=mysqli_num_rows($result);
+                                                $row = mysqli_fetch_array($result);
                                                 
-                                                echo $rws;?></h2>
+                                                echo $row['total_table'];?></h2>
                                 <p class="m-b-0">Total table in All Hotels</p>
                             </div>
                         </div>

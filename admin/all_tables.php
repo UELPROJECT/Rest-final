@@ -5,6 +5,54 @@ include("../connection/connect.php");
 error_reporting(0);
 session_start();
 
+if (isset($_POST['submit'])) {
+        
+    if (isset($_POST['hotel'])){
+        
+        $q1 = 'SELECT * FROM restaurant ';
+        $q2 = mysqli_query($db,$q1);
+        if (!mysqli_num_rows($q2) > 0){
+            $success1= '<script type ="text/javascript"> alert ("WRONG DATA")</script>';
+        }else {
+            while ($rows = mysqli_fetch_array($q2)){
+                if ($_POST['hotel'] == $rows['title']){
+                    $d = $rows['rs_id'];
+                    $q3 = 'INSERT INTO total_tbl (total_table ,rs_id)VALUES ("4",'.$d.')';
+                    $q4 = mysqli_query($db,$q3);
+                    $success =     '<div class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         GET THE VALUE
+    </div>';
+                }
+            }
+        }
+        // $q3 = 'INSERT INTO total_tbl VALUES("4",'.$q2.')';
+        // $q4 = mysqli_query($db,$q3);
+        
+
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 
 <head>
@@ -123,7 +171,9 @@ session_start();
 
 
             <div class="container-fluid">
-
+               <?php
+               echo $success;
+               ?>
                 <div class="row">
                     <div class="col-12">
 
@@ -137,24 +187,27 @@ session_start();
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
-                                            <tr>
-                                                <td>
-                                                    <p>Select the number of table to added to hotel </p>
-                                                </td>
-                                                <td>
-                                                    <center>
-                                                        <select name="table_Add[]">
-                                                            <?php
-                                                            for ($i = 0; $i <= 10; $i++) {
-                                                                echo '<option value=' . $i . '>' . $i . '</option>';
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </center>
-                                                </td>
+                                        <form action='' method='post' enctype="multipart/form-data">
+                                                <tr>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p>
+                                                            YOU CAN HAVE ONLY 4 TABLE THIS TIME
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>
+                                                            <center>
+                                                                4
+                                                            </center>
+
+                                                        </p>
+                                                    </td>
 
 
-                                            </tr>
+                                                </tr>
 
                                         </thead>
                                         <tbody>
@@ -166,15 +219,19 @@ session_start();
 
                                                 <td>
                                                     <center>
-                                                        <select name="hotel[]">
+                                                        <select name="hotel">
                                                             <?php
-                                                            $q1 = "SELECT * FROM restaurant";
+                                                            $selected;
+                                                            $q1 = "SELECT title FROM restaurant";
                                                             $q2 = mysqli_query($db, $q1);
                                                             if (!mysqli_num_rows($q2) > 0) {
                                                                 echo '<td colspan="8"<center>NO RESTAURANT IN DATABASE</center></td>';
                                                             } else {
                                                                 while ($rows = mysqli_fetch_array($q2)) {
-                                                                    echo '<option value=' . $rows['rs_id'] . '/>' . $rows['title'] . ' </option>';
+                                                                    // echo '<option value=' . $rows['rs_id'].'' '/>' . $rows['title'] . ' </option>';
+                                                                   
+                                                                        echo ('<option value="' . $rows['title'] . '' . $selected . '">' . $rows['title'] . '</option>');
+                                                                   
                                                                 }
                                                             }
                                                             ?>
@@ -182,21 +239,24 @@ session_start();
                                                     </center>
                                                 </td>
                                             </tr>
-                                          
+
                                             <tr>
-                                                <td colspan="2", rowspan="2">
+                                                <td colspan="2" , rowspan="2">
                                                     <center>
-                                                      
-                                                        <input type= "submit"  value="ADD TABLE TO RESTAURANT"></input>
-                                                                                                          </center>
-                                                </td>   
+
+                                                        <input type="submit" name="submit" value="ADD TABLE TO RESTAURANT"></input>
+                                                    </center>
+
+                                                </td>
                                             </tr>
+
+                                            </form>
+
                                           
-
-
 
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -235,3 +295,4 @@ session_start();
 </body>
 
 </html>
+
