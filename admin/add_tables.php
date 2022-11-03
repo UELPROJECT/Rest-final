@@ -4,7 +4,12 @@
 include("../connection/connect.php");
 error_reporting(0);
 session_start();
-
+if(empty($_SESSION["adm_id"]))
+{
+	header('location:index.php');
+}
+else
+{
 if (isset($_POST['submit'])) {
         
     if (isset($_POST['hotel'])){
@@ -301,4 +306,7 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+<?php
+}
+?>
 

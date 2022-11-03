@@ -6,7 +6,12 @@ error_reporting(0);
 session_start();
 
 include_once 'product-action.php'; 
-
+if(empty($_SESSION["f_name"]))
+{
+	header('location:index.php');
+}
+else
+{
 ?>
 
 
@@ -316,3 +321,7 @@ $item_total += ($item["price"]*$item["quantity"]);
 </body>
 
 </html>
+
+<?php
+}
+?>

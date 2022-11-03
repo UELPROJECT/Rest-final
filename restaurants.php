@@ -4,6 +4,13 @@
 include("connection/connect.php");
 error_reporting(0);
 session_start();
+
+if(empty($_SESSION["f_name"]))
+{
+	header('location:index.php');
+}
+else
+{
 ?>
 <head>
     <meta charset="utf-8">
@@ -178,3 +185,6 @@ session_start();
 </body>
 
 </html>
+<?php
+}
+?>
