@@ -5,7 +5,7 @@ include("connection/connect.php");
 error_reporting(0);
 session_start();
 
-if(empty($_SESSION['user_id']))  
+if(empty($_SESSION['name']))  
 {
 	header('location:login.php');
 }
@@ -158,7 +158,7 @@ only screen and (max-width: 760px),
             <nav class="navbar navbar-dark">
                 <div class="container">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                    <a class="navbar-brand" href="index.php"> <img class="img-rounded" src="images/food-mania-logo.png" alt=""> </a>
+                    <a class="navbar-brand" href="index.php"> Yummy-Tummy </a>
                     <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
                         <ul class="nav navbar-nav">
                             <li class="nav-item"> <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
@@ -170,13 +170,15 @@ only screen and (max-width: 760px),
 								echo '<li class="nav-item"><a href="login.php" class="nav-link active">Login</a> </li>
 							  <li class="nav-item"><a href="registration.php" class="nav-link active">Signup</a> </li>';
 							}
-						else
+						else if (isset($_SESSION["name"]))
 							{
 									
 									
 									echo  '<li class="nav-item"><a href="your_orders.php" class="nav-link active">Your Orders</a> </li>';
 									echo  '<li class="nav-item"><a href="logout.php" class="nav-link active">Logout</a> </li>';
+									echo  '<li class="nav-item"><p style="color:#6699ff;font-size:21px;margin-top:3px;">'.$_SESSION["name"].'</p></li>';
 							}
+
 
 						?>
 							 
@@ -221,8 +223,7 @@ only screen and (max-width: 760px),
 							  <th>Price</th>
 							   <th>Status</th>
 							     <th>Date</th>
-								   <th>Action</th>
-							  
+								  
 							</tr>
 						  </thead>
 						  <tbody>
@@ -245,7 +246,7 @@ only screen and (max-width: 760px),
 												<tr>	
 														 <td data-column="Item"> <?php echo $row['title']; ?></td>
 														  <td data-column="Quantity"> <?php echo $row['quantity']; ?></td>
-														  <td data-column="price">₹<?php echo $row['price']; ?></td>
+														  <td data-column="price">£<?php echo $row['price']; ?></td>
 														   <td data-column="status"> 
 														   <?php 
 																			$status=$row['status'];
@@ -283,7 +284,7 @@ only screen and (max-width: 760px),
 														   
 														   </td>
 														  <td data-column="Date"> <?php echo $row['date']; ?></td>
-														   <td data-column="Action"> <a href="delete_orders.php?order_del=<?php echo $row['o_id'];?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fa fa-trash-o" style="font-size:16px"></i></a> 
+														   <!-- <td data-column="Action"> <a href="delete_orders.php?order_del=<?php echo $row['o_id'];?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fa fa-trash-o" style="font-size:16px"></i></a>  -->
 															</td>
 														 
 												</tr>
@@ -341,8 +342,9 @@ only screen and (max-width: 760px),
                                 </div>
                                 <div class="col-xs-12 col-sm-4 address color-gray">
                                     <h5>Address</h5>
-                                    <p>213, Raheja Chambers, Free Press Journal Road, Nariman Point, Mumbai, Maharashtra 400021, India</p>
-                                    <h5>Phone: +91 8093424562</a></h5> </div>
+									<p>PROJECT DONE BY 4 MEMBER</p>
+                            <p>Group Member are : Ravi ,Darsh ,Nerali and Arthai</p>
+                            <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img style="heght: 20px;weight: 20px;" src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
                                    <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
