@@ -66,6 +66,27 @@ if(isset($_POST['submit']))
 												$sql = "INSERT INTO restaurant(c_id,title,email,phone,url,o_hr,c_hr,o_days,address,image) VALUE('".$_POST['c_name']."','".$res_name."','".$_POST['email']."','".$_POST['phone']."','".$_POST['url']."','".$_POST['o_hr']."','".$_POST['c_hr']."','".$_POST['o_days']."','".$_POST['address']."','".$fnew."')";  // store the submited data ino the database :images
 												mysqli_query($db, $sql); 
 												move_uploaded_file($temp, $store);
+                                                $getrs_id= "SELECT * FROM restaurant ";
+                                                $d= mysqli_query($db,$getrs_id);
+                                                if (!mysqli_num_rows($d)>0){
+                                                    $error = 	'<div class="alert alert-danger alert-dismissible fade show">
+																<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																<strong>Max Image Size is 1024kb!</strong> Try different Image.
+															</div>';
+                                                }
+                                                else{
+                                                while ($row = mysqli_fetch_array($d)){
+                                                    if($_POST['res_name']==$row['title']){
+                                                        if ($_POST["hotel_table"] == "YES"){
+                                                            $add_table = "INSERT INTO hotel_table (rs_id,table_yes_no)VALUE('".$row["rs_id"]."',1)";
+                                                            mysqli_query($db,$add_table);
+                                                        }else {
+                                                            $add_table1 = "INSERT INTO hotel_table (rs_id,table_yes_no)VALUE('".$row['rs_id']."',0)";
+                                                            mysqli_query($db,$add_table1);
+                                                        }
+                                                    }
+                                                }}
+                                                
 			  
 													$success = 	'<div class="alert alert-success alert-dismissible fade show">
 																<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -366,6 +387,18 @@ if(isset($_POST['submit']))
 													 </select>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Select table for Restaurant(YES/NO)</label>
+													<select name="hotel_table" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                        <option>--Select Category--</option>
+                                                        <option value="YES">YES</option>
+                                                        <option value="NO">NO</option>
+
+                                                 
+													 </select>
+                                                </div>
+                                            </div>
 											
 											
 											
@@ -393,7 +426,7 @@ if(isset($_POST['submit']))
                             </div>
                         </div>
                     </div>
-					<footer class="footer"> © 2021 All rights reserved. </footer>
+					<footer class="footer"> © 2022 All rights reserved. </footer>
                 </div>
                 
             </div>

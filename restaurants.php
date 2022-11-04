@@ -85,6 +85,11 @@ else
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+                            <div class ="entry-dscr">
+
+                                <!-- <h5><a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Table</a></h5> -->
+                            
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-9">
                             <div class="bg-gray restaurant-entry">
@@ -101,11 +106,26 @@ else
 															<!-- end:Logo -->
 															<div class="entry-dscr">
 																<h5><a href="dishes.php?res_id='.$rows['rs_id'].'" >'.$rows['title'].'</a></h5> <span>'.$rows['address'].'</span>
+                                                                ';
+                                                                $test2 = "SELECT * FROM hotel_table";
+                                                                $q = mysqli_query($db,$test2);
+                                                                while ($row = mysqli_fetch_array($q)){
+                                                                    if ($rows['rs_id'] == $row['rs_id']){
+                                                                     echo '<h5> <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Tables</a></h5>';   
+                                                                    }else {
+                                                                        echo '<h5>Table Not Available</h5>';
+                                                                    }
+                                                                }
+                                                               echo '
+
 																
 															</div>
+                                                            
 															<!-- end:Entry description -->
 														</div>
 														
+                                                        
+
 														 <div class="col-sm-12 col-md-12 col-lg-4 text-xs-center">
 																<div class="right-content bg-white">
 																	<div class="right-review">
@@ -113,7 +133,9 @@ else
 																		<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>
 																</div>
 																<!-- end:right info -->
-															</div>';
+															</div>
+                                                            
+                                                            ';
 										  }
 						
 						
