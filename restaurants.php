@@ -113,7 +113,7 @@ else
                                                                     if ($rows['rs_id'] == $row['rs_id']){
                                                                      echo '<h5> <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Tables</a></h5>';   
                                                                     }else {
-                                                                        echo '<h5>Table Not Available</h5>';
+                                                                        echo '<h5>Table Not Available At The Moment, Only Take Away Services</h5>';
                                                                     }
                                                                 }
                                                                echo '
