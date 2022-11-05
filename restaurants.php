@@ -106,31 +106,38 @@ else
 															<!-- end:Logo -->
 															<div class="entry-dscr">
 																<h5><a href="dishes.php?res_id='.$rows['rs_id'].'" >'.$rows['title'].'</a></h5> <span>'.$rows['address'].'</span>
-                                                                ';
-                                                                $test2 = "SELECT * FROM hotel_table";
-                                                                $q = mysqli_query($db,$test2);
-                                                                while ($row = mysqli_fetch_array($q)){
-                                                                    if ($rows['rs_id'] == $row['rs_id']){
-                                                                     echo '<h5> <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Tables</a></h5>';   
-                                                                    }else {
-                                                                        echo '<h5>Table Not Available At The Moment, Only Take Away Services</h5>';
-                                                                    }
-                                                                }
-                                                               echo '
+                                                                
+                                                                
+                                                               
 
 																
 															</div>
                                                             
 															<!-- end:Entry description -->
-														</div>
+														</div>';
+                                                        
+                                                        echo '
+
 														
                                                         
 
 														 <div class="col-sm-12 col-md-12 col-lg-4 text-xs-center">
 																<div class="right-content bg-white">
 																	<div class="right-review">
+																	
+                                                                    ';
+                                                                    $test2 = "SELECT * FROM hotel_table";
+                                                                $q = mysqli_query($db,$test2);
+                                                                while ($row = mysqli_fetch_array($q)){
+                                                                    if ($rows['rs_id'] == $row['rs_id']){
+                                                                     echo '<h5> <a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Tables</a></h5>';   
+                                                                    }else {
+                                                                     echo '   <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>';
+                                                                    }
+                                                                }
+                                                        echo '
+
 																		
-																		<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>
 																</div>
 																<!-- end:right info -->
 															</div>
