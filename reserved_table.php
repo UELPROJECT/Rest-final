@@ -60,8 +60,8 @@ if (empty($_SESSION["name"])) {
         </header>
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <p class="display-1"></p>
+                <div class = "col-xs-12 col-sm-4">
+                    <p class ="display-1"></p>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@ if (empty($_SESSION["name"])) {
 
                         <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Restaurants</a></li>
                         <li class="col-xs-12 col-sm-4 link-item active"><span>2</span><a href="#">BOOK A TABLE</a></li>
-                        
+                        <!-- <li class="col-xs-12 col-sm-4 link-item "><span>3</span><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>">Pick Your favorite foods</a></li> -->
                         <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay</a></li>
 
                     </ul>
@@ -109,7 +109,7 @@ if (empty($_SESSION["name"])) {
 
                 </div>
             </div>
-            <div class="container m-t-10">
+            <div     class="container m-t-10">
                 <div class="row">
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 
@@ -158,149 +158,119 @@ if (empty($_SESSION["name"])) {
 
                                 </div>
                             </div>
-                            <script>
-                                function checkCont(i) {
-                                    t = 0;
-                                    for (j = 0; j < document.f1.Table.length; j++) {
-                                        if (document.f1.Table[j].checked) {
-                                            t = t + 1;
-                                        }
+
+
+                            
+
+
+
+
+                        </div>
+                    </div>
+
+                   
+                            
+                            <div class="collapse in" id="popular2">
+                                <?php
+                                $stmt = $db->prepare("select * from dishes where rs_id='$_GET[res_id]'");
+                                $stmt->execute();
+                                $products = $stmt->get_result();
+                                if (!empty($products)) {
+                                    foreach ($products as $product) {
+
+
+
+                                ?>
+                                        <div class="food-item">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-lg-8">
+                                                    <form method="post" action='dishes.php?res_id=<?php echo $_GET['res_id']; ?>&action=add&id=<?php echo $product['d_id']; ?>'>
+                                                        <div class="rest-logo pull-left">
+                                                            <a class="restaurant-logo pull-left" href="#"><?php echo '<img src="admin/Res_img/dishes/' . $product['img'] . '" alt="Food logo">'; ?></a>
+                                                        </div>
+
+                                                        <div class="rest-descr">
+                                                            <h6><a href="#"><?php echo $product['title']; ?></a></h6>
+                                                            <p> <?php echo $product['slogan']; ?></p>
+                                                        </div>
+
+                                                </div>
+
+                                                <div class="col-xs-12 col-sm-12 col-lg-4 pull-right item-cart-info">
+                                                    <span class="price pull-left">£<?php echo $product['price']; ?></span>
+
+
+                                                    <input class="b-r-0" type="text" name="quantity" style="margin-left:30px;" value="1" size="2" />
+                                                    <input type="submit" class="btn theme-btn" style="margin-left:40px;" value="Add to cart" />
+                                                </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+
+                                <?php
                                     }
-                                    if (t == 1) {
-                                        document.getElementById("total_table_price").innerHTML = "£ 5";
-                                        document.getElementById("submit_button").disabled = false;
-                                    } else if (t == 2) {
-                                        document.getElementById("total_table_price").innerHTML = "£ 10";
-                                        document.getElementById("submit_button").disabled = false;
-                                    } else if (t == 0) {
-                                        document.getElementById("total_table_price").innerHTML = "£ 0";
-
-
-                                    }
-                                    if (t > 2) {
-                                        alert("ONLY 2 TABLE ALLOW PER CUSTOMER");
-                                        document.f1.Table[i].checked = false;
-                                    }
-
-                                    return t;
-
-
                                 }
-                            </script>
 
-                            <form name="f1" method="post">
-                                <div class="widget-body">
-                                    <div class="price-wrap text-xs-center">
-                                        <script>
-
-                                        </script>
-                                        <p>TOTAL</p>
-                                        <h3 class="value" id="total_table_price" name="check_tbl"><strong>£ 0</strong></h3>
-                                        <button  name="submit" id="submit_button" disabled>RESERVED TABLE</button>
+                                ?>
 
 
-                                    </div>
-                                </div>
 
-                              
-
+                            </div>
 
                         </div>
-                    </div>
+                        
 
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
-
-
-                        <div class="menu-widget" id="2">
-                            <div class="widget-heading">
-                                <h3 class="widget-title text-dark" style="text-align: center; font-size: 25px;">
-                                    TABLE</h3>
-                                <br />
-
-                            </div>
-                            <div class="col-md-5">
-
-                            </div>
-                            <div class="widget-heading">
-                                <h3 class="widget-title text-dark">
-                                    <?php
-
-                                    $tb = 'SELECT  * FROM total_tbl';
-                                    $tq = mysqli_query($db, $tb);
-                                    $t = 1;
-                                    while ($row = mysqli_fetch_array($tq)) {
-
-                                        for ($i = 0; $i < $row['total_table']; $i++) {
-                                            echo '<center><h2><input type="checkbox" id= ' . $row['rs_id'], ' name= "Table" onclick="checkCont( ' . $i . ' )" value =' . $row['total_tbl'] . ' > &nbsp;&nbsp;Table ' . $t . '</input></h2><br/></center>';
-                                            $t++;
-                                        }
-
-                                        // echo '<h2><input type="checkbox" id= '.$row['rs_id'],' name= "Table[]" value=>Table 2</input></h2>';
-                                        // echo '<h2><input type="checkbox" id= '.$row['rs_id'],' name= "Table[]" value=>Table 3</input></h2>';
-                                        // echo '<h2><input type="checkbox" id= '.$row['rs_id'],' name= "Table[]" value=>Table 4</input></h2>';
-                                    }
-                                    ?>
-                                    </form>
-
-                                </h3>
-                                <div class="clearfix">
-
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
-
-
 
                 </div>
 
             </div>
+            
 
-        </div>
+            <footer class="footer">
+                <div class="container">
 
-
-        <footer class="footer">
-            <div class="container">
-
-                <div class="row bottom-footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3 payment-options color-gray">
-                                <h5>Payment Options</h5>
-                                <ul>
-                                    <li>
-                                        <a href="#"> <img src="images/paypal.png" alt="Paypal"> </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <img src="images/mastercard.png" alt="Mastercard"> </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <img src="images/maestro.png" alt="Maestro"> </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <img src="images/stripe.png" alt="Stripe"> </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <img src="images/bitcoin.png" alt="Bitcoin"> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-12 col-sm-4 address color-gray">
-                                <h5>Group Project UEL</h5>
-                                <p>Group Member are : Ravi, Darsh, Nirali and Arthai</p>
-                                <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img src="images/img/app.jpg"></a>Connect to our group.</h5>
-                            </div>
-                            <div class="col-xs-12 col-sm-5 additional-info color-gray">
-                                <h5>Addition informations</h5>
-                                <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
+                    <div class="row bottom-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 payment-options color-gray">
+                                    <h5>Payment Options</h5>
+                                    <ul>
+                                        <li>
+                                            <a href="#"> <img src="images/paypal.png" alt="Paypal"> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/mastercard.png" alt="Mastercard"> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/maestro.png" alt="Maestro"> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/stripe.png" alt="Stripe"> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/bitcoin.png" alt="Bitcoin"> </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 address color-gray">
+                                    <h5>Group Project UEL</h5>
+                                    <p>Group Member are : Ravi, Darsh, Nirali and Arthai</p>
+                                    <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img src="images/img/app.jpg"></a>Connect to our group.</h5>
+                                </div>
+                                <div class="col-xs-12 col-sm-5 additional-info color-gray">
+                                    <h5>Addition informations</h5>
+                                    <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-        </footer>
+                </div>
+            </footer>
 
         </div>
 
