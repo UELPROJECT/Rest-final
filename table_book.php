@@ -58,6 +58,13 @@ if (empty($_SESSION["name"])) {
                 </div>
             </nav>
         </header>
+        <div class="container">
+            <div class="row">
+                <div class = "col-xs-12 col-sm-4">
+                    <p class ="display-1"></p>
+                </div>
+            </div>
+        </div>
         <div class="page-wrapper">
             <div class="top-links">
                 <div class="container">
@@ -102,7 +109,7 @@ if (empty($_SESSION["name"])) {
 
                 </div>
             </div>
-            <div class="container m-t-30">
+            <div     class="container m-t-10">
                 <div class="row">
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 
@@ -187,16 +194,18 @@ if (empty($_SESSION["name"])) {
                     </div>
 
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
+                                    
 
-
-                        <div class="menu-widget" id="3">
+                        <div class="menu-widget" id="2">
                             <div class="widget-heading">
                                 <h3 class="widget-title text-dark" style="text-align: center; font-size: 25px;">
                                     TABLE</h3>
                                 <br />
 
                             </div>
-                           
+                            <div class= "col-md-5">
+                                        
+                                    </div>
                             <div class="widget-heading">
                                 <h3 class="widget-title text-dark">
                                     <?php
@@ -242,6 +251,7 @@ if (empty($_SESSION["name"])) {
 
                                 </div>
                             </div>
+                            
                             <div class="collapse in" id="popular2">
                                 <?php
                                 $stmt = $db->prepare("select * from dishes where rs_id='$_GET[res_id]'");
@@ -292,6 +302,14 @@ if (empty($_SESSION["name"])) {
                             </div>
 
                         </div>
+                        <div class="col-sm-4 col-md-8 col-lg-19">
+                        <div class="widget-heading">
+                                <h3 class="widget-title text-dark" style="text-align: center; font-size: 25px;">
+                                    TABLE</h3>
+                                <br />
+
+                            </div>
+                        </div>
 
 
                     </div>
@@ -299,6 +317,7 @@ if (empty($_SESSION["name"])) {
                 </div>
 
             </div>
+            
 
             <footer class="footer">
                 <div class="container">
