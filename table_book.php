@@ -188,7 +188,7 @@ if (empty($_SESSION["name"])) {
                                 }
                             </script>
 
-                            <form name="f1" method="post">
+                            <form name="f1" method="post" action="#">
                                 <div class="widget-body">
                                     <div class="price-wrap text-xs-center">
                                         <script>
@@ -197,6 +197,7 @@ if (empty($_SESSION["name"])) {
                                         <p>TOTAL</p>
                                         <h3 class="value" id="total_table_price" name="check_tbl"><strong>£ 0</strong></h3>
                                         <button  name="submit" id="submit_button" disabled>RESERVED TABLE</button>
+                                        <button><?php  echo $t?></button>
 
 
                                     </div>
@@ -231,7 +232,7 @@ if (empty($_SESSION["name"])) {
                                     while ($row = mysqli_fetch_array($tq)) {
 
                                         for ($i = 0; $i < $row['total_table']; $i++) {
-                                            echo '<center><h2><input type="checkbox" id= ' . $row['rs_id'], ' name= "Table" onclick="checkCont( ' . $i . ' )" value =' . $row['total_tbl'] . ' > &nbsp;&nbsp;Table ' . $t . '</input></h2><br/></center>';
+                                            echo '<center><h2><input type="checkbox"  name= "Table" onclick="checkCont( ' . $i . ' )" value =' . $row['total_tbl'] . ' > &nbsp;&nbsp;Table ' . $t . '</input></h2><br/></center>';
                                             $t++;
                                         }
 
@@ -243,6 +244,11 @@ if (empty($_SESSION["name"])) {
                                     </form>
 
                                 </h3>
+                                
+                                <!-- HERE CODE FOR THE DATA ENTRIES -->
+
+
+
                                 <div class="clearfix">
 
                                 </div>
