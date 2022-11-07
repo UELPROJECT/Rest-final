@@ -72,7 +72,7 @@ if (empty($_SESSION["name"])) {
 
                         <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Restaurants</a></li>
                         <li class="col-xs-12 col-sm-4 link-item active"><span>2</span><a href="#">BOOK A TABLE</a></li>
-                        
+
                         <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay</a></li>
 
                     </ul>
@@ -169,26 +169,36 @@ if (empty($_SESSION["name"])) {
                                     if (t == 1) {
                                         document.getElementById("total_table_price").innerHTML = "£ 5";
                                         document.getElementById("submit_button").disabled = false;
+                                        document.cookie = "table_selected =" + t;
                                     } else if (t == 2) {
                                         document.getElementById("total_table_price").innerHTML = "£ 10";
                                         document.getElementById("submit_button").disabled = false;
-                                    } else if (t == 0) {
-                                        document.getElementById("total_table_price").innerHTML = "£ 0";
-
-
+                                        document.cookie = "table_selected =" + t;
                                     }
                                     if (t > 2) {
                                         alert("ONLY 2 TABLE ALLOW PER CUSTOMER");
                                         document.f1.Table[i].checked = false;
+                                    } else if (t == 0) {
+                                        document.getElementById("total_table_price").innerHTML = "£ 0";
+                                        document.getElementById("submit_button").disabled = true;
+                                        console.log(t);
+                                        document.cookie = "table_selected =" + t;
+                                        // var up = <?php $update_table ?>;
+
+
+
                                     }
 
+
+
                                     return t;
+
 
 
                                 }
                             </script>
 
-                            <form name="f1" method="post" action="#">
+                            <form name="f1" method="post">
                                 <div class="widget-body">
                                     <div class="price-wrap text-xs-center">
                                         <script>
@@ -196,14 +206,14 @@ if (empty($_SESSION["name"])) {
                                         </script>
                                         <p>TOTAL</p>
                                         <h3 class="value" id="total_table_price" name="check_tbl"><strong>£ 0</strong></h3>
-                                        <button  name="submit" id="submit_button" disabled>RESERVED TABLE</button>
-                                        <button><?php  echo $t?></button>
+                                        <button name="submit" id="submit_button"  disabled>RESERVED TABLE</button>
+                                        
 
 
                                     </div>
                                 </div>
 
-                              
+
 
 
                         </div>
@@ -244,9 +254,23 @@ if (empty($_SESSION["name"])) {
                                     </form>
 
                                 </h3>
-                                
-                                <!-- HERE CODE FOR THE DATA ENTRIES -->
 
+                                <!-- HERE CODE FOR THE DATA ENTRIES -->
+                                <?php
+                                if (isset($_POST['submit'])) {
+                                    $d = $_COOKIE['table_selected'];
+                                    echo '<script> console.log(' . $d . ')</script>';
+                                    if ($d=="1"){
+                                        echo '<script> alert("YOU AHVE SELECTED '.$d.' TABLE");</script>';
+                                        $getData = "SELECT * FROM total_tbl";
+                                        $r1 = mysqli_query($db,$getData);
+                                        while ($r=mysqli_fetch_array($r1)){
+                                            
+                                        }
+                                    }
+                                }
+
+                                ?>
 
 
                                 <div class="clearfix">
