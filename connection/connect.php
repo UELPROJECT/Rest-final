@@ -2,8 +2,8 @@
 
 //main connection file for both admin & front end
 $servername = "localhost"; //server
-$username = "php"; //username
-$password = "php"; //password
+$username = "root"; //username
+$password = ""; //password
 $dbname = "online_rest";  //database
 
 // Create connection
