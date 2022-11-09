@@ -6,7 +6,12 @@ error_reporting(0);
 session_start();
 
 include_once 'product-action.php'; 
-
+if(empty($_SESSION["name"]))
+{
+	header('location:index.php');
+}
+else
+{
 ?>
 
 
@@ -30,7 +35,7 @@ include_once 'product-action.php';
             <nav class="navbar navbar-dark">
                 <div class="container">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                    <a class="navbar-brand" href="index.php"> WALK N EAT </a>
+                    <a class="navbar-brand" href="index.php"> Yummy-Tummy</a>
                     <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
                        <ul class="nav navbar-nav">
                             <li class="nav-item"> <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
@@ -316,3 +321,7 @@ $item_total += ($item["price"]*$item["quantity"]);
 </body>
 
 </html>
+
+<?php
+}
+?>

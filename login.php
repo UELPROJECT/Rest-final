@@ -34,7 +34,7 @@
             <nav class="navbar navbar-dark">
                 <div class="container">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                    <a class="navbar-brand" href="index.php"> <img class="img-rounded" src="images/food-mania-logo.png" alt=""> </a>
+                    <a class="navbar-brand" href="index.php"> Yummy-Tummy </a>
                     <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
                        <ul class="nav navbar-nav">
                             <li class="nav-item"> <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
@@ -160,7 +160,7 @@ if(isset($_POST['submit']))
                             <h5>Address</h5>
                             <p>PROJECT DONE BY 4 MEMBER</p>
                             <p>Group Member are : Ravi ,Darsh ,Nerali and Arthai</p>
-                            <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img style="heght: 20px;weight: 20px;" src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
+                            <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img style="height: 20px;width: 20px;" src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                         <div class="col-xs-12 col-sm-5 additional-info color-gray">
                             <h5>Addition informations</h5>
                            <p>Join thousands of other restaurants who benefit from having partnered with us.</p>

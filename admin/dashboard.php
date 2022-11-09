@@ -91,7 +91,14 @@ else
                             </ul>
                         </li>
 						 <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li>
-                         <li> <a href="all_tables.php"><i class="fa fa-table" aria-hidden="true"></i><span>Table Booked</span></a></li>
+                         <!-- <li> <a href="all_tables.php"><i class="fa fa-table" aria-hidden="true"></i><span>Table Booked</span></a></li> -->
+                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table" aria-hidden="true"></i><span class="hide-menu">Table</span></a>
+                            <ul aria-expanded="false" class="collapse">
+								<li><a href="all_menu.php">BOOKED TABLES</a></li>
+								<li><a href="add_tables.php">Add Tables</a></li>
+                              
+                                
+                            </ul>
                          
                     </ul>
                 </nav>
@@ -209,11 +216,11 @@ else
                                     <span><i class="fa fa-table f-s-40 "></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2><?php $sql="select * from table_reserve";
+                                    <h2><?php $sql="SELECT * FROM total_tbl";
 												$result=mysqli_query($db,$sql); 
-                                                $rws=mysqli_num_rows($result);
+                                                $row = mysqli_fetch_array($result);
                                                 
-                                                echo $rws;?></h2>
+                                                echo $row['total_table'];?></h2>
                                 <p class="m-b-0">Total table in All Hotels</p>
                             </div>
                         </div>

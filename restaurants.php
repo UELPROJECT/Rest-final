@@ -4,6 +4,13 @@
 include("connection/connect.php");
 error_reporting(0);
 session_start();
+
+if(empty($_SESSION["name"]))
+{
+	header('location:index.php');
+}
+else
+{
 ?>
 <head>
     <meta charset="utf-8">
@@ -25,7 +32,7 @@ session_start();
             <nav class="navbar navbar-dark">
                 <div class="container">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                    <a class="navbar-brand" href="index.php"> <img class="img-rounded" src="images/food-mania-logo.png" alt=""> </a>
+                    <a class="navbar-brand" href="index.php"> Yummy-Tummy </a>
                     <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
                         <ul class="nav navbar-nav">
                             <li class="nav-item"> <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
@@ -78,6 +85,11 @@ session_start();
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+                            <div class ="entry-dscr">
+
+                                <!-- <h5><a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Table</a></h5> -->
+                            
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-9">
                             <div class="bg-gray restaurant-entry">
@@ -94,19 +106,43 @@ session_start();
 															<!-- end:Logo -->
 															<div class="entry-dscr">
 																<h5><a href="dishes.php?res_id='.$rows['rs_id'].'" >'.$rows['title'].'</a></h5> <span>'.$rows['address'].'</span>
+                                                                
+                                                                
+                                                               
+
 																
 															</div>
+                                                            
 															<!-- end:Entry description -->
-														</div>
+														</div>';
+                                                        
+                                                        echo '
+
 														
+                                                        
+
 														 <div class="col-sm-12 col-md-12 col-lg-4 text-xs-center">
 																<div class="right-content bg-white">
 																	<div class="right-review">
+																	
+                                                                    ';
+                                                                    $test2 = "SELECT * FROM hotel_table";
+                                                                $q = mysqli_query($db,$test2);
+                                                                while ($row = mysqli_fetch_array($q)){
+                                                                    if ($rows['rs_id'] == $row['rs_id']){
+                                                                     echo '<h5> <a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Tables</a></h5>';   
+                                                                    }else {
+                                                                     echo '   <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>';
+                                                                    }
+                                                                }
+                                                        echo '
+
 																		
-																		<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>
 																</div>
 																<!-- end:right info -->
-															</div>';
+															</div>
+                                                            
+                                                            ';
 										  }
 						
 						
@@ -178,3 +214,6 @@ session_start();
 </body>
 
 </html>
+<?php
+}
+?>

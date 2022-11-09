@@ -4,7 +4,12 @@
 include("../connection/connect.php");
 error_reporting(0);
 session_start();
-
+if(empty($_SESSION["adm_id"]))
+{
+	header('location:index.php');
+}
+else
+{
 
 if(isset($_POST['submit'] ))
 {
@@ -123,7 +128,13 @@ if(isset($_POST['submit'] ))
                             </ul>
                         </li>
 						 <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li>
-                         <li> <a href="all_tables.php"><i class="fa fa-table" aria-hidden="true"></i><span>Table Booked</span></a></li>
+                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table" aria-hidden="true"></i><span class="hide-menu">Table</span></a>
+                            <ul aria-expanded="false" class="collapse">
+								<li><a href="all_menu.php">BOOKED TABLES</a></li>
+								<li><a href="add_tables.php">Add Tables</a></li>
+                              
+                                
+                            </ul>
                          
                     </ul>
                 </nav>
@@ -274,3 +285,6 @@ if(isset($_POST['submit'] ))
 </body>
 
 </html>
+<?php
+}
+?>
