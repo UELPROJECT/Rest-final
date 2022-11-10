@@ -72,8 +72,8 @@ if (empty($_SESSION["name"])) {
 
                         <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Restaurants</a></li>
                         <li class="col-xs-12 col-sm-4 link-item active"><span>2</span><a href="#">BOOK A TABLE</a></li>
-
-                        <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Pick Your Food</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item"><span>4</span><a href="#">Order and Pay</a></li>
 
                     </ul>
                 </div>
@@ -236,13 +236,13 @@ if (empty($_SESSION["name"])) {
                                 <h3 class="widget-title text-dark">
                                     <?php
 
-                                    $tb = 'SELECT  * FROM total_tbl';
+                                    $tb = 'SELECT  * FROM res_tbl';
                                     $tq = mysqli_query($db, $tb);
                                     $t = 1;
                                     while ($row = mysqli_fetch_array($tq)) {
 
-                                        for ($i = 0; $i < $row['total_table']; $i++) {
-                                            echo '<center><h2><input type="checkbox"  name= "Table" onclick="checkCont( ' . $i . ' )" value =' . $row['total_tbl'] . ' > &nbsp;&nbsp;Table ' . $t . '</input></h2><br/></center>';
+                                        for ($i = 0; $i < $row['tbl_no']; $i++) {
+                                            echo '<center><h2><input type="checkbox"  name= "Table" onclick="checkCont( ' . $i . ' )" value =' . $row['tbl_no'] . ' > &nbsp;&nbsp;Table ' . $t . '</input></h2><br/></center>';
                                             $t++;
                                         }
 

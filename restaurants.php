@@ -57,7 +57,8 @@ session_start();
                 <div class="container">
                     <ul class="row links">
                        
-                        <li class="col-xs-12 col-sm-4 link-item active"><span>1</span><a href="#">Choose Restaurant</a></li>
+                        <li class="col-xs-12 col-sm-4 link-item active"><span>1</span><a href="#">DINE IN OR TAKE AWAY</a></li>
+                        
                         <li class="col-xs-12 col-sm-4 link-item"><span>2</span><a href="#">Pick Your favorite food</a></li>
                         <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay</a></li>
                     </ul>
@@ -99,10 +100,18 @@ session_start();
 														
 														 <div class="col-sm-12 col-md-12 col-lg-4 text-xs-center">
 																<div class="right-content bg-white">
-																	<div class="right-review">
-																		
-																		<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>
-																</div>
+																	<div class="right-review">';
+																		$q1 = 'SELECT * FROM res_tbl';
+                                                                        $q2= mysqli_query($db,$q1);
+                                                                        while ($r=mysqli_fetch_array($q2)){
+                                                                            if ($rows['rs_id']==$r['rs_id']){
+                                                                                echo '<a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash"> Book Table</a> </div>';        
+                                                                            }else {
+                                                                                echo '<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>';
+                                                                            }
+
+                                                                        }
+																		echo '</div>
 																<!-- end:right info -->
 															</div>';
 										  }
