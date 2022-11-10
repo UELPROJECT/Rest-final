@@ -12,52 +12,21 @@ else
 {
 if (isset($_POST['submit'])) {
         
-    if (isset($_POST['hotel'])){
-        
-        $q1 = 'SELECT * FROM restaurant ';
+    echo '<script> alert("DATA WHEN BUTTON CANT");</script>';
+    if ($_POST["hotel"]){
+        echo '<script>alert("SELECTED VALUE IS "+'.$_POST['hotel'].'); </script>';
+        $q1 = 'SELECT * FROM restaurant';
         $q2 = mysqli_query($db,$q1);
-        if (!mysqli_num_rows($q2) > 0){
-            $success1= '<script type ="text/javascript"> alert ("WRONG DATA")</script>';
-        }else {
-            while ($rows = mysqli_fetch_array($q2)){
-                if ($_POST['hotel'] == $rows['title']){
-                    $d = $rows['rs_id'];
-                    $q3 = 'INSERT INTO total_tbl (total_table ,rs_id)VALUES ("4",'.$d.')';
-                    $q4 = mysqli_query($db,$q3);
-                    $success =     '<div class="alert alert-success alert-dismissible fade show">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         GET THE VALUE
-    </div>';
-                }
+        while ($r=mysqli_fetch_array($q2)){
+            if ($r['rs_id']==$_POST['hotel']){
+               $q1 ="INSERT INTO res_tbl (rs_id,title,tbl_no)VALUE('".$r['rs_id']."','".$r['title']."',4)";
+               mysqli_query($db,$q1);
             }
         }
-        // $q3 = 'INSERT INTO total_tbl VALUES("4",'.$q2.')';
-        // $q4 = mysqli_query($db,$q3);
+       
         
-
     }
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 
 <head>
@@ -67,7 +36,7 @@ if (isset($_POST['submit'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>All Orders</title>
+    <title>ADD TABLES</title>
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -90,7 +59,7 @@ if (isset($_POST['submit'])) {
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
 
-                        <span><img src="images/food-mania-logo.png" alt="homepage" class="dark-logo" /></span>
+                        <span>YummyTummy</span>
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -199,69 +168,39 @@ if (isset($_POST['submit'])) {
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                         <form action='' method='post' enctype="multipart/form-data">
-                                                <tr>
+                                            
+                                               
+                                                
+                                                   
+                                                                                        <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Select Hotel Name </label>
+													<select name="hotel" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                        <option>--Select Category--</option>
+                                                 <?php $ssql ="select * from add_tbl";
+                                                //  Here you can see only the table details which are only listed Yes while add restaurant page if you select YES then you will be able to see the name here.
 
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <p>
-                                                            YOU CAN HAVE ONLY 4 TABLE THIS TIME
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p>
-                                                            <center>
-                                                                4
-                                                            </center>
-
-                                                        </p>
-                                                    </td>
-
-
-                                                </tr>
-
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td><label for="hotel">
-                                                        <center> Select the hotel to add table</center>
-                                                    </label></td>
-
-                                                <td>
-                                                    <center>
-                                                        <select name="hotel">
-                                                            <?php
-                                                            $selected;
-                                                            $q1 = "SELECT title FROM restaurant";
-                                                            $q2 = mysqli_query($db, $q1);
-                                                            if (!mysqli_num_rows($q2) > 0) {
-                                                                echo '<td colspan="8"<center>NO RESTAURANT IN DATABASE</center></td>';
-                                                            } else {
-                                                                while ($rows = mysqli_fetch_array($q2)) {
-                                                                    // echo '<option value=' . $rows['rs_id'].'' '/>' . $rows['title'] . ' </option>';
-                                                                   
-                                                                        echo ('<option value="' . $rows['title'] . '' . $selected . '">' . $rows['title'] . '</option>');
-                                                                   
-                                                                }
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </center>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td colspan="2" , rowspan="2">
-                                                    <center>
-
-                                                        <input type="submit" name="submit" value="ADD TABLE TO RESTAURANT"></input>
-                                                    </center>
-
-                                                </td>
-                                            </tr>
-
-                                            </form>
+													$res=mysqli_query($db, $ssql); 
+													while($row=mysqli_fetch_array($res))  
+													{
+                                                       echo' <option value="'.$row['rs_id'].'">'.$row['title']. '</option>';;
+													}  
+                                                 
+													?> 
+													 </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <center><label class="control-label" style="font-size: 27px;" > YOU CAN ADD ONLY 4 TABLE </label></center>
+												</div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <center><input type="submit" name="submit"  class="btn btn-success" value="ADD TABLE TO RESTAURANT"></center>
+												</div>
+                                            </div>
+                                                                                        </form>
 
                                           
 
@@ -281,7 +220,7 @@ if (isset($_POST['submit'])) {
     </div>
 
 
-    <footer class="footer"> © 2021 All rights reserved.</footer>
+   
 
     </div>
 
