@@ -17,7 +17,10 @@ session_start();
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animsition.min.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet"> </head>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="alertifyjs/css/alertify.min.css" />
+<!-- include a theme -->
+<link rel="stylesheet" href="alertifyjs/css/themes/default.min.css" /> </head>
 
 <body>
 
@@ -105,7 +108,8 @@ session_start();
                                                                         $q2= mysqli_query($db,$q1);
                                                                         while ($r=mysqli_fetch_array($q2)){
                                                                             if ($rows['rs_id']==$r['rs_id']){
-                                                                                echo '<a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash"> Book Table</a> </div>';        
+                                                                                
+                                                                                echo '<a onclick="fun();" class="btn theme-btn-dash"> Book Table/View Menu</a> </div>';        
                                                                             }else {
                                                                                 echo '<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>';
                                                                             }
@@ -118,6 +122,32 @@ session_start();
 						
 						
 						?>
+                       <script >
+                        function fun(){
+                            if(!alertify.myAlert){
+  //define a new dialog
+  alertify.dialog('myAlert',function factory(){
+    return{
+      main:function(message){
+        this.message = message;
+      },
+      setup:function(){
+          return { 
+            // buttons:[{text: "cool!", key:27/*Esc*/}],
+            buttons:[{text: "BOOK TABLE"}],
+            focus: { element:1 }
+          };
+        
+      },
+      prepare:function(){
+        this.setContent(this.message);
+      }
+  }});
+}
+//launch it.
+alertify.myAlert("DO YOU WANT TO BOOK TABLE OR GIVE ORDER!");
+                         }
+                       </script>
                                     
                                 </div>
                 
@@ -161,9 +191,9 @@ session_start();
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-4 address color-gray">
-                                    <h5>Address</h5>
-                                    <p>213, Raheja Chambers, Free Press Journal Road, Nariman Point, Mumbai, Maharashtra 400021, India</p>
-                                    <h5>Phone: +91 8093424562</a></h5> </div>
+                        <h5>Group Project UEL</h5>
+                                <p>Group Member are : Ravi, Darsh, Nirali and Arthai</p>
+                                <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
                                    <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
@@ -182,6 +212,7 @@ session_start();
     <script src="js/jquery.isotope.min.js"></script>
     <script src="js/headroom.js"></script>
     <script src="js/foodpicky.min.js"></script>
+    <script src="alertifyjs/alertify.min.js"></script>
 </body>
 
 </html>
