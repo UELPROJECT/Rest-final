@@ -109,7 +109,36 @@ session_start();
                                                                         while ($r=mysqli_fetch_array($q2)){
                                                                             if ($rows['rs_id']==$r['rs_id']){
                                                                                 
-                                                                                echo '<a onclick="fun();" class="btn theme-btn-dash"> Book Table/View Menu</a> </div>';        
+                                                                                // echo '<a onclick="fun();" class="btn theme-btn-dash"> Book Table/View Menu</a> </div>';        
+                                                                                echo '<div id="myModal" class="modal">
+                                                                                <div class="modal-dialog">
+                                                                                    <div class="modal-content">
+                                                                                         
+                                                                                        <div class="modal-header">
+                                                                                            <h4 class="modal-title">CONFORM THAT YOU WANT TO BOOK AN TABLE</h4>
+                                                                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                                                                        </div>
+                                                                             
+                                                                                        <div class="modal-body">
+                                                                                            <p>Are you sure that you want to book an Table  ?</p>
+                                                                                            <form method="POST" action="dishes.php?res_id='.$rows['rs_id'].'" id="form-delete-user">
+                                                                                                <input type="hidden" name="id">
+                                                                                            </form>
+                                                                                        </div>
+                                                                             
+                                                                                        <div class="modal-footer">
+                                                                                    
+                                                                                            <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a>
+                                                                                            <a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Table</a>
+                                                                                        </div>
+                                                                             
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            	
+
+                                                                                <a class="btn theme-btn-dash" onclick="confirmDelete(this);" data-id ='.$rows['rs_id'].'>BOOK TABLE / VIEW MENU</a></div>  
+                                                                            ';
                                                                             }else {
                                                                                 echo '<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>';
                                                                             }
@@ -123,30 +152,15 @@ session_start();
 						
 						?>
                        <script >
-                        function fun(){
-                            if(!alertify.myAlert){
-  //define a new dialog
-  alertify.dialog('myAlert',function factory(){
-    return{
-      main:function(message){
-        this.message = message;
-      },
-      setup:function(){
-          return { 
-            // buttons:[{text: "cool!", key:27/*Esc*/}],
-            buttons:[{text: "BOOK TABLE"}],
-            focus: { element:1 }
-          };
-        
-      },
-      prepare:function(){
-        this.setContent(this.message);
-      }
-  }});
+                       function confirmDelete(self) {
+        var id = self.getAttribute("data-id");
+                        
+    
+        document.getElementById("form-delete-user").id.value = id;
+        // window.location("dishes.php?res_id='.$rows['rs_id'].'");
+    $("#myModal").modal("show");
+    
 }
-//launch it.
-alertify.myAlert("DO YOU WANT TO BOOK TABLE OR GIVE ORDER!");
-                         }
                        </script>
                                     
                                 </div>
