@@ -19,7 +19,7 @@ if (empty($_SESSION["name"])) {
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="#">
-        <title>Dishes</title>
+        <title>Select Table</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/animsition.min.css" rel="stylesheet">
@@ -183,7 +183,7 @@ if (empty($_SESSION["name"])) {
                                         document.getElementById("submit_button").disabled = true;
                                         console.log(t);
                                         document.cookie = "table_selected =" + t;
-                                        // var up = <?php $update_table ?>;
+                                      
 
 
 
@@ -241,8 +241,8 @@ if (empty($_SESSION["name"])) {
                                     $t = 1;
                                     while ($row = mysqli_fetch_array($tq)) {
 
-                                        for ($i = 0; $i < $row['tbl_no']; $i++) {
-                                            echo '<center><h2><input type="checkbox"  name= "Table" onclick="checkCont( ' . $i . ' )" value =' . $row['tbl_no'] . ' > &nbsp;&nbsp;Table ' . $t . '</input></h2><br/></center>';
+                                        for ($i = 0; $i < $row['tbl_unbook']; $i++) {
+                                            echo '<center><h2><input type="checkbox"  name= "Table" onclick="checkCont( ' . $i . ' )" value =' . $row['tbl_unbook'] . ' > &nbsp;&nbsp;Table ' . $t . '</input></h2><br/></center>';
                                             $t++;
                                         }
 
@@ -260,14 +260,34 @@ if (empty($_SESSION["name"])) {
                                 if (isset($_POST['submit'])) {
                                     $d = $_COOKIE['table_selected'];
                                     echo '<script> console.log(' . $d . ')</script>';
-                                    if ($d=="1"){
-                                        echo '<script> alert("YOU AHVE SELECTED '.$d.' TABLE");</script>';
-                                        $getData = "SELECT * FROM total_tbl";
-                                        $r1 = mysqli_query($db,$getData);
-                                        while ($r=mysqli_fetch_array($r1)){
-                                            
+                                    $r= 'select * from res_tbl';
+                                    $r2 = mysqli_query($db,$r);
+                                    while($r3= mysqli_fetch_array($r2)){
+                                        echo '<script>alert("data are '.$r3['rs_id' ].'+'.$_SESSION["name"].'"); </script>';
+                                        $userN= $_SESSION['name'];
+                                        if ($d=="1"){
+                                        //    $in = 'INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('.$d.','.$user.','.$r3['rs_id'].')';
+                                           $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                           mysqli_query($db,$i);
+                                        //    echo '<script> alert("DATA "'.mysqli_query($db,$i).');</script>';
+                                           
+                                           $unb= $r3['tbl_no']-$d;
+                                           
+                                        //    $up = 'UPDATE res_tbl SET tbl_book='.$d.',tbl_unbook='.$unb.' WHERE  rs_id= '.$r3['rs_id'].'';
+                                           $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
+                                           mysqli_query($db,$up);
+                                        }else if ($d=="2"){
+                                            $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                           mysqli_query($db,$i);
+                                           $unb= $r3['tbl_no']-$d;
+                                           $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
+                                           mysqli_query($db,$up);
                                         }
                                     }
+                                    
+                                   
+                                    
+                                    
                                 }
 
                                 ?>
