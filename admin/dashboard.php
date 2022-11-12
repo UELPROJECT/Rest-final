@@ -38,7 +38,7 @@ else
             <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         
-                        <span><img src="images/food-mania-logo.png" alt="homepage" class="dark-logo" /></span>
+                        <span>YummyTummy</span>
                     </a>
                 </div>
 

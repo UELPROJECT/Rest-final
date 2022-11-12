@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
 
-                        <span><img src="images/food-mania-logo.png" alt="homepage" class="dark-logo" /></span>
+                        <span>YummyTummy</span>
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -296,7 +296,7 @@ if (isset($_POST['submit'])) {
 
                 </div>
             </div>
-            <footer class="footer"> © 2021 All rights reserved. </footer>
+           
         </div>
     </div>
     </div>
