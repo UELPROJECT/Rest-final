@@ -94,7 +94,7 @@ else
                          <!-- <li> <a href="all_tables.php"><i class="fa fa-table" aria-hidden="true"></i><span>Table Booked</span></a></li> -->
                          <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table" aria-hidden="true"></i><span class="hide-menu">Table</span></a>
                             <ul aria-expanded="false" class="collapse">
-								<li><a href="all_menu.php">BOOKED TABLES</a></li>
+								<li><a href="all_tables.php">BOOKED TABLES</a></li>
 								<li><a href="add_tables.php">Add Tables</a></li>
                               
                                 
@@ -198,7 +198,7 @@ else
                                     <span><i class="fa fa-table f-s-40 "></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2><?php $sql="select * from table_reserve";
+                                    <h2><?php $sql="SELECT SUM(tbl_book) FROM res_tbl";
 												$result=mysqli_query($db,$sql); 
                                                 $rws=mysqli_num_rows($result);
                                                 

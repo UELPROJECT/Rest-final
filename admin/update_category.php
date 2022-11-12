@@ -65,7 +65,7 @@ if(isset($_POST['submit'] ))
             <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         
-                        <span><img src="images/food-mania-logo.png" alt="homepage" class="dark-logo" /></span>
+                        <span>YummyTummy</span>
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -268,7 +268,15 @@ if(isset($_POST['submit'] ))
                             </ul>
                         </li>
 						 <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li>
-                         <li> <a href="all_tables.php"><i class="fa fa-table" aria-hidden="true"></i><span>Table Booked</span></a></li>
+                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table" aria-hidden="true"></i><span class="hide-menu">Table</span></a>
+                            <ul aria-expanded="false" class="collapse">
+								<li><a href="all_tables.php">BOOKED TABLES</a></li>
+								<li><a href="add_tables.php">Add Tables</a></li>
+                              
+                                
+                            </ul>
+                         
+                    </ul>
                          
                     </ul>
                 </nav>
@@ -349,7 +357,7 @@ if(isset($_POST['submit'] ))
             
             </div>
        
-            <footer class="footer"> © 2021 All rights reserved. </footer>
+           
          
         </div>
       
