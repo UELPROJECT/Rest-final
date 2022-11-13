@@ -18,9 +18,8 @@ session_start();
     <link href="css/animsition.min.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="alertifyjs/css/alertify.min.css" />
-<!-- include a theme -->
-<link rel="stylesheet" href="alertifyjs/css/themes/default.min.css" /> </head>
+    <link rel="stylesheet" href="alertifyjs/css/themes/default.min.css" />    
+</head>
 
 <body>
 
@@ -61,7 +60,6 @@ session_start();
                     <ul class="row links">
                        
                         <li class="col-xs-12 col-sm-4 link-item active"><span>1</span><a href="#">DINE IN OR TAKE AWAY</a></li>
-                        
                         <li class="col-xs-12 col-sm-4 link-item"><span>2</span><a href="#">Pick Your favorite food</a></li>
                         <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay</a></li>
                     </ul>
@@ -86,6 +84,7 @@ session_start();
                                 <div class="row">
 								<?php $ress= mysqli_query($db,"select * from restaurant");
 									      while($rows=mysqli_fetch_array($ress))
+
 										  {
 													
 						
@@ -100,58 +99,67 @@ session_start();
 															</div>
 															<!-- end:Entry description -->
 														</div>
+
 														
+
 														 <div class="col-sm-12 col-md-12 col-lg-4 text-xs-center">
 																<div class="right-content bg-white">
 																	<div class="right-review">';
-																		$q1 = 'SELECT * FROM res_tbl';
-                                                                        $q2= mysqli_query($db,$q1);
-                                                                        while ($r=mysqli_fetch_array($q2)){
-                                                                            if ($rows['rs_id']==$r['rs_id']){
-                                                                                
-                                                                                // echo '<a onclick="fun();" class="btn theme-btn-dash"> Book Table/View Menu</a> </div>';        
-                                                                                echo '<div id="myModal" class="modal">
-                                                                                <div class="modal-dialog">
-                                                                                    <div class="modal-content">
-                                                                                         
-                                                                                        <div class="modal-header">
-                                                                                            <h4 class="modal-title">CONFORM THAT YOU WANT TO BOOK AN TABLE</h4>
-                                                                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                                                                        </div>
-                                                                             
-                                                                                        <div class="modal-body">
-                                                                                            <p>Are you sure that you want to book an Table  ?</p>
-                                                                                            <form method="POST" action="dishes.php?res_id='.$rows['rs_id'].'" id="form-delete-user">
-                                                                                                <input type="hidden" name="id">
-                                                                                            </form>
-                                                                                        </div>
-                                                                             
-                                                                                        <div class="modal-footer">
-                                                                                    
-                                                                                            <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a>
-                                                                                            <a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Table</a>
-                                                                                        </div>
-                                                                             
+                                                                    $q1 = 'SELECT rs_id FROM res_tbl';
+                                                                    $q2= mysqli_query($db,$q1);
+                                                                    while ($r=mysqli_fetch_array($q2)){
+                                                                        if ($rows['rs_id']==$r['rs_id']){
+                                                                            
+                                                                            // echo '<a onclick="fun();" class="btn theme-btn-dash"> Book Table/View Menu</a> </div>';        
+                                                                            echo '<div id="myModal" class="modal">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                     
+                                                                                    <div class="modal-header">
+                                                                                        <h4 class="modal-title">CONFORM THAT YOU WANT TO BOOK AN TABLE</h4>
+                                                                                        <button type="button" class="close" data-dismiss="modal">×</button>
                                                                                     </div>
+                                                                         
+                                                                                    <div class="modal-body">
+                                                                                        <p>Are you sure that you want to book an Table  ?</p>
+                                                                                        <form method="POST" action="dishes.php?res_id='.$rows['rs_id'].'" id="form-delete-user">
+                                                                                            <input type="hidden" name="id">
+                                                                                        </form>
+                                                                                    </div>
+                                                                         
+                                                                                    <div class="modal-footer">
+                                                                                
+                                                                                        <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a>
+                                                                                        <a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Table</a>
+                                                                                    </div>
+                                                                         
                                                                                 </div>
                                                                             </div>
-                                                                            	
+                                                                        </div>
+                                                                            
 
-                                                                                <a class="btn theme-btn-dash" onclick="confirmDelete(this);" data-id ='.$rows['rs_id'].'>BOOK TABLE / VIEW MENU</a></div>  
-                                                                            ';
-                                                                            }else {
-                                                                                echo '<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> </div>';
-                                                                            }
-
+                                                                            <a class="btn theme-btn-dash" onclick="confirmDelete(this);" data-id ='.$rows['rs_id'].'>BOOK TABLE / VIEW MENU</a>  
+                                                                        ';
+                                                                        }else {
+                                                                            echo '<a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> ';
                                                                         }
-																		echo '</div>
-																<!-- end:right info -->
-															</div>';
+
+                                                                    }
+																	// <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a> 
+                                                                    echo '
+                                                                    </div>
+																 </div><!-- end:right info -->
+														</div>';
 										  }
 						
 						
 						?>
-                       <script >
+                                    
+                                </div>
+                
+                            </div>
+                         
+                            <script >
                        function confirmDelete(self) {
         var id = self.getAttribute("data-id");
                         
@@ -162,12 +170,6 @@ session_start();
     
 }
                        </script>
-                                    
-                                </div>
-                
-                            </div>
-                         
-                            
                                 
                             </div>
                           

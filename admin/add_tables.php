@@ -12,15 +12,18 @@ else
 {
 if (isset($_POST['submit'])) {
         
-    echo '<script> alert("DATA WHEN BUTTON CANT");</script>';
+    
     if ($_POST["hotel"]){
-        echo '<script>alert("SELECTED VALUE IS "+'.$_POST['hotel'].'); </script>';
+        // echo '<script>alert("SELECTED VALUE IS "+'.$_POST['hotel'].'); </script>';
         $q1 = 'SELECT * FROM restaurant';
         $q2 = mysqli_query($db,$q1);
         while ($r=mysqli_fetch_array($q2)){
+           
             if ($r['rs_id']==$_POST['hotel']){
                $q1 ="INSERT INTO res_tbl (rs_id,title,tbl_no)VALUE('".$r['rs_id']."','".$r['title']."',4)";
                mysqli_query($db,$q1);
+               $up= "UPDATE add_tbl SET table_yes= 1 WHERE title='".$rp['title']."'";
+               mysqli_query($db,$up);
             }
         }
        
@@ -182,7 +185,9 @@ if (isset($_POST['submit'])) {
 
 													$res=mysqli_query($db, $ssql); 
 													while($row=mysqli_fetch_array($res))  
-													{
+                                                    if($row['table_yes']=="1"){
+
+                                                    }else 	{
                                                        echo' <option value="'.$row['rs_id'].'">'.$row['title']. '</option>';;
 													}  
                                                  

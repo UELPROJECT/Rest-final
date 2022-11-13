@@ -64,7 +64,7 @@ if(isset($_POST['submit']))
                                                 if ($_POST['hotel_table']=="YES"){
                                                     echo "<script>alert ('INTO YES');</script>";
                                                     // echo '<script> alert("INTO THE YES ");</script';
-                                                    $getD="SELECT rs_id FROM restaurant WHERE title = 'abc'";
+                                                    $getD="SELECT rs_id FROM restaurant WHERE title = '".$res_name."'";
                                                     $gd= mysqli_query($db,$getD);
                                                     while ($r= mysqli_fetch_array($gd)){
                                                         echo "<script>alert ('INOT WHILE LOOP');</script>";    

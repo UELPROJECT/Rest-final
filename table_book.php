@@ -265,24 +265,31 @@ if (empty($_SESSION["name"])) {
                                     while($r3= mysqli_fetch_array($r2)){
                                         echo '<script>alert("data are '.$r3['rs_id' ].'+'.$_SESSION["name"].'"); </script>';
                                         $userN= $_SESSION['name'];
-                                        if ($d=="1"){
-                                        //    $in = 'INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('.$d.','.$user.','.$r3['rs_id'].')';
-                                           $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
-                                           mysqli_query($db,$i);
-                                        //    echo '<script> alert("DATA "'.mysqli_query($db,$i).');</script>';
-                                           
-                                           $unb= $r3['tbl_no']-$d;
-                                           
-                                        //    $up = 'UPDATE res_tbl SET tbl_book='.$d.',tbl_unbook='.$unb.' WHERE  rs_id= '.$r3['rs_id'].'';
-                                           $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
-                                           mysqli_query($db,$up);
-                                        }else if ($d=="2"){
-                                            $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
-                                           mysqli_query($db,$i);
-                                           $unb= $r3['tbl_no']-$d;
-                                           $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
-                                           mysqli_query($db,$up);
+                                        $ch="SELECT SUM(cst_tbl_no),cst_usrname FROM cst_tbl_book GROUP BY cst_username" ;
+                                        $h=mysqli_query($db,$ch);
+                                        while ($row5= mysqli_fetch_array($h)){
+                                            if ($row5>3){
+                                                echo '<script>alert ("YOU CANt SELECT MORE THEN 2 TABLE PER USER");</script>';
+                                            }
                                         }
+                                        // if ($d=="1"){
+                                        
+                                        //    $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                        //    mysqli_query($db,$i);
+                                        
+                                           
+                                        //    $unb= $r3['tbl_no']-$d;
+                                           
+                                        
+                                        //    $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
+                                        //    mysqli_query($db,$up);
+                                        // }else if ($d=="2"){
+                                        //     $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                        //    mysqli_query($db,$i);
+                                        //    $unb= $r3['tbl_no']-$d;
+                                        //    $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
+                                        //    mysqli_query($db,$up);
+                                        // }
                                     }
                                     
                                    
