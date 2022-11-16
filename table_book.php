@@ -170,6 +170,7 @@ if (empty($_SESSION["name"])) {
                                         document.getElementById("total_table_price").innerHTML = "£ 5";
                                         document.getElementById("submit_button").disabled = false;
                                         document.cookie = "table_selected =" + t;
+                                        
                                     } else if (t == 2) {
                                         document.getElementById("total_table_price").innerHTML = "£ 10";
                                         document.getElementById("submit_button").disabled = false;
@@ -206,8 +207,9 @@ if (empty($_SESSION["name"])) {
                                         </script>
                                         <p>TOTAL</p>
                                         <h3 class="value" id="total_table_price" name="check_tbl"><strong>£ 0</strong></h3>
+                                        <a href="dishes.php?res_id=<?php $_POST['res_id']?>">
                                         <button name="submit" id="submit_button"  disabled>RESERVED TABLE</button>
-                                        
+                                        </a>
 
 
                                     </div>
@@ -263,33 +265,38 @@ if (empty($_SESSION["name"])) {
                                     $r= 'select * from res_tbl';
                                     $r2 = mysqli_query($db,$r);
                                     while($r3= mysqli_fetch_array($r2)){
-                                        echo '<script>alert("data are '.$r3['rs_id' ].'+'.$_SESSION["name"].'"); </script>';
+                                        // echo '<script>alert("data are '.$r3['rs_id' ].'+'.$_SESSION["name"].'"); </script>';
                                         $userN= $_SESSION['name'];
-                                        $ch="SELECT SUM(cst_tbl_no),cst_usrname FROM cst_tbl_book GROUP BY cst_username" ;
-                                        $h=mysqli_query($db,$ch);
-                                        while ($row5= mysqli_fetch_array($h)){
-                                            if ($row5>3){
-                                                echo '<script>alert ("YOU CANt SELECT MORE THEN 2 TABLE PER USER");</script>';
-                                            }
-                                        }
-                                        // if ($d=="1"){
+                                        $t= "SELECT SUM(tbl_book) ,cst_username FROM cst_tbl_book GROUP BY cst_username";
+                                        // $ch="SELECT SUM(cst_tbl_no) AS total_no FROM cst_tbl_book " ;
+                                        // $h=mysqli_query($db,$ch);
+                                        $result=mysqli_query($db,$sql); 
+                                        $rws=mysqli_num_rows($result);
+                                        // echo '<script>alert("data are "'.$rws.');</script>';
+                                        if ($d=="1"){
                                         
-                                        //    $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
-                                        //    mysqli_query($db,$i);
+                                            $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                            mysqli_query($db,$i);
+                                         
+                                            
+                                            $unb= $r3['tbl_unbook']-$d;
+                                            $booktbl= $r3['tbl_book']+$d;
+
+                                            
+                                            $up ="UPDATE res_tbl SET tbl_book='".$booktbl."',tbl_unbook='".$unb."' WHERE rs_id = '".$r3['rs_id']."'";
+                                            mysqli_query($db,$up);
+                                            // echo '<script>alert("UPDATE DONE '.$unb.'");</script>';
+                                            header("url=dishes.php?res_id='".$R3['rs_id']."");
+                                            
+
+                                         }else if ($d=="2"){
+                                            //  $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                            // mysqli_query($db,$i);
+                                            // $unb= $r3['tbl_no']-$d;
+                                            // $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' WHERE rs_id = '".$r3['rs_id']."'";
+                                            // mysqli_query($db,$up);
+                                         }
                                         
-                                           
-                                        //    $unb= $r3['tbl_no']-$d;
-                                           
-                                        
-                                        //    $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
-                                        //    mysqli_query($db,$up);
-                                        // }else if ($d=="2"){
-                                        //     $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
-                                        //    mysqli_query($db,$i);
-                                        //    $unb= $r3['tbl_no']-$d;
-                                        //    $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' where rs_id = '".$r3['rs_id']."'";
-                                        //    mysqli_query($db,$up);
-                                        // }
                                     }
                                     
                                    
