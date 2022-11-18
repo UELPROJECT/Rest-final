@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         while ($r=mysqli_fetch_array($q2)){
            
             if ($r['rs_id']==$_POST['hotel']){
-               $q1 ="INSERT INTO res_tbl (rs_id,title,tbl_no)VALUE('".$r['rs_id']."','".$r['title']."',4)";
+               $q1 ="INSERT INTO res_tbl (rs_id,title,tbl_no,tbl_book,tbl_unbook)VALUE('".$r['rs_id']."','".$r['title']."',4,0,4)";
                mysqli_query($db,$q1);
                $up= "UPDATE add_tbl SET table_yes= 1 WHERE title='".$rp['title']."'";
                mysqli_query($db,$up);
@@ -186,9 +186,9 @@ if (isset($_POST['submit'])) {
 													$res=mysqli_query($db, $ssql); 
 													while($row=mysqli_fetch_array($res))  
                                                     if($row['table_yes']=="1"){
-
+                                                        echo' <option value="'.$row['rs_id'].'">'.$row['title']. '</option>';
                                                     }else 	{
-                                                       echo' <option value="'.$row['rs_id'].'">'.$row['title']. '</option>';;
+                                                       
 													}  
                                                  
 													?> 

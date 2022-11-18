@@ -198,11 +198,11 @@ else
                                     <span><i class="fa fa-table f-s-40 "></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2><?php $sql="SELECT SUM(tbl_book) FROM res_tbl";
+                                    <h2><?php $sql="SELECT SUM(tbl_book) as tbl_book_up FROM res_tbl";
 												$result=mysqli_query($db,$sql); 
-                                                $rws=mysqli_num_rows($result);
+                                                $rws=mysqli_fetch_array($result);
                                                 
-                                                echo $rws;?></h2>
+                                                echo $rws['tbl_book_up'];?></h2>
                                 <p class="m-b-0">Total Reserved Table till date</p>
                             </div>
                         </div>

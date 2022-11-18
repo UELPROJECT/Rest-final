@@ -198,7 +198,7 @@ if (empty($_SESSION["name"])) {
 
                                 }
                             </script>
-
+                            <?php echo "<script>alert('SEEION DATA ARE '".$_SESSION["id"]."'');</script>";?>
                             <form name="f1" method="post">
                                 <div class="widget-body">
                                     <div class="price-wrap text-xs-center">
@@ -207,9 +207,9 @@ if (empty($_SESSION["name"])) {
                                         </script>
                                         <p>TOTAL</p>
                                         <h3 class="value" id="total_table_price" name="check_tbl"><strong>£ 0</strong></h3>
-                                        <a href="dishes.php?res_id=<?php $_POST['res_id']?>">
+                                        
                                         <button name="submit" id="submit_button"  disabled>RESERVED TABLE</button>
-                                        </a>
+                                        
 
 
                                     </div>
@@ -264,17 +264,37 @@ if (empty($_SESSION["name"])) {
                                     echo '<script> console.log(' . $d . ')</script>';
                                     $r= 'select * from res_tbl';
                                     $r2 = mysqli_query($db,$r);
+
                                     while($r3= mysqli_fetch_array($r2)){
                                         // echo '<script>alert("data are '.$r3['rs_id' ].'+'.$_SESSION["name"].'"); </script>';
                                         $userN= $_SESSION['name'];
                                         $t= "SELECT SUM(tbl_book) ,cst_username FROM cst_tbl_book GROUP BY cst_username";
                                         // $ch="SELECT SUM(cst_tbl_no) AS total_no FROM cst_tbl_book " ;
                                         // $h=mysqli_query($db,$ch);
+
                                         $result=mysqli_query($db,$sql); 
                                         $rws=mysqli_num_rows($result);
+                                        
                                         // echo '<script>alert("data are "'.$rws.');</script>';
                                         if ($d=="1"){
-                                        
+                                            // $ch="SELECT COUNT(cst_tbl_no), cst_username FROM cst_tbl_book WHERE cst_username= '".$_SESSION['name']."' GROUP BY cst_username;";
+                                             
+                                            echo '<script>alert("DATA ARE '.$_SESSION['id'].'");</script>';
+                                            $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                            mysqli_query($db,$i);
+                                         
+                                            
+                                            $unb= $r3['tbl_unbook']-$d;
+                                            $booktbl= $r3['tbl_book']+$d;
+
+                                            
+                                            $up ="UPDATE res_tbl SET tbl_book='".$booktbl."',tbl_unbook='".$unb."' WHERE rs_id = '".$r3['rs_id']."'";
+                                            mysqli_query($db,$up);
+                                           
+                                            
+                                            
+
+                                         }else if ($d=="2"){
                                             $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
                                             mysqli_query($db,$i);
                                          
@@ -286,15 +306,7 @@ if (empty($_SESSION["name"])) {
                                             $up ="UPDATE res_tbl SET tbl_book='".$booktbl."',tbl_unbook='".$unb."' WHERE rs_id = '".$r3['rs_id']."'";
                                             mysqli_query($db,$up);
                                             // echo '<script>alert("UPDATE DONE '.$unb.'");</script>';
-                                            header("url=dishes.php?res_id='".$R3['rs_id']."");
-                                            
-
-                                         }else if ($d=="2"){
-                                            //  $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
-                                            // mysqli_query($db,$i);
-                                            // $unb= $r3['tbl_no']-$d;
-                                            // $up ="UPDATE res_tbl SET tbl_book='".$d."',tbl_unbook='".$unb."' WHERE rs_id = '".$r3['rs_id']."'";
-                                            // mysqli_query($db,$up);
+                                            header("Location:dishes.php?res_id='".$r3['rs_id']."");
                                          }
                                         
                                     }
