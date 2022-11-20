@@ -185,6 +185,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 													  
 												   																							
 											</tr>
+                                            
 											<tr>
 													<td><strong>Price:</strong></td>
 												    <td><center>₹<?php echo $rows['price']; ?></center></td>

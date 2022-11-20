@@ -167,14 +167,16 @@ if (empty($_SESSION["name"])) {
                                         }
                                     }
                                     if (t == 1) {
-                                        document.getElementById("total_table_price").innerHTML = "£ 5";
+                                       
                                         document.getElementById("submit_button").disabled = false;
                                         document.cookie = "table_selected =" + t;
                                         
+                                        
                                     } else if (t == 2) {
-                                        document.getElementById("total_table_price").innerHTML = "£ 10";
+                                       
                                         document.getElementById("submit_button").disabled = false;
                                         document.cookie = "table_selected =" + t;
+                                        
                                     }
                                     if (t > 2) {
                                         alert("ONLY 2 TABLE ALLOW PER CUSTOMER");
@@ -198,8 +200,10 @@ if (empty($_SESSION["name"])) {
 
                                 }
                             </script>
-                            <?php echo "<script>alert('SEEION DATA ARE '".$_SESSION["id"]."'');</script>";?>
-                            <form name="f1" method="post">
+                            <?php echo "<script>alert('SEEION DATA ARE '".$_SESSION["id"]."'');</script>";
+
+                            echo '<form name="f1" method="post" >';
+                            ?>
                                 <div class="widget-body">
                                     <div class="price-wrap text-xs-center">
                                         <script>
@@ -208,7 +212,7 @@ if (empty($_SESSION["name"])) {
                                         <p>TOTAL</p>
                                         <h3 class="value" id="total_table_price" name="check_tbl"><strong>£ 0</strong></h3>
                                         
-                                        <button name="submit" id="submit_button"  disabled>RESERVED TABLE</button>
+                                        <input type="submit" name="submit" id="submit_button" value="BOOK TABLE"  disabled />
                                         
 
 
@@ -259,6 +263,7 @@ if (empty($_SESSION["name"])) {
 
                                 <!-- HERE CODE FOR THE DATA ENTRIES -->
                                 <?php
+                                ob_start();
                                 if (isset($_POST['submit'])) {
                                     $d = $_COOKIE['table_selected'];
                                     echo '<script> console.log(' . $d . ')</script>';
@@ -268,19 +273,14 @@ if (empty($_SESSION["name"])) {
                                     while($r3= mysqli_fetch_array($r2)){
                                         // echo '<script>alert("data are '.$r3['rs_id' ].'+'.$_SESSION["name"].'"); </script>';
                                         $userN= $_SESSION['name'];
-                                        $t= "SELECT SUM(tbl_book) ,cst_username FROM cst_tbl_book GROUP BY cst_username";
-                                        // $ch="SELECT SUM(cst_tbl_no) AS total_no FROM cst_tbl_book " ;
-                                        // $h=mysqli_query($db,$ch);
-
-                                        $result=mysqli_query($db,$sql); 
-                                        $rws=mysqli_num_rows($result);
+                                        echo '<script>console.log('.$userN.');</script>';
                                         
-                                        // echo '<script>alert("data are "'.$rws.');</script>';
+                                        
+                                        echo '<script>alert("data are "'.$rws.');</script>';
                                         if ($d=="1"){
-                                            // $ch="SELECT COUNT(cst_tbl_no), cst_username FROM cst_tbl_book WHERE cst_username= '".$_SESSION['name']."' GROUP BY cst_username;";
-                                             
-                                            echo '<script>alert("DATA ARE '.$_SESSION['id'].'");</script>';
-                                            $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
+                                            
+                                           
+                                            $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$_SESSION['name']."','".$r3['rs_id']."')";
                                             mysqli_query($db,$i);
                                          
                                             
@@ -289,10 +289,12 @@ if (empty($_SESSION["name"])) {
 
                                             
                                             $up ="UPDATE res_tbl SET tbl_book='".$booktbl."',tbl_unbook='".$unb."' WHERE rs_id = '".$r3['rs_id']."'";
-                                            mysqli_query($db,$up);
-                                           
+                                            $t=mysqli_query($db,$up);
+                                           if ($t==1){
+                                            // echo '<script>alert("IN TO IF CONDITION");</script>';
+                                            echo '<script>window.location.href="dishes.php?res_id='.$r3['rs_id'].'"</script>';
                                             
-                                            
+                                            }   
 
                                          }else if ($d=="2"){
                                             $i= "INSERT INTO cst_tbl_book(cst_tbl_no,cst_username,rs_id)VALUE('".$d."','".$userN."','".$r3['rs_id']."')";
@@ -304,9 +306,13 @@ if (empty($_SESSION["name"])) {
 
                                             
                                             $up ="UPDATE res_tbl SET tbl_book='".$booktbl."',tbl_unbook='".$unb."' WHERE rs_id = '".$r3['rs_id']."'";
-                                            mysqli_query($db,$up);
+                                            $t=mysqli_query($db,$up);
                                             // echo '<script>alert("UPDATE DONE '.$unb.'");</script>';
-                                            header("Location:dishes.php?res_id='".$r3['rs_id']."");
+                                            if ($t==1){
+                                                // echo '<script>alert("IN TO IF CONDITION");</script>';
+                                                echo '<script>window.location.href="dishes.php?res_id='.$r3['rs_id'].'"</script>';
+                                                
+                                            }
                                          }
                                         
                                     }

@@ -122,16 +122,15 @@ session_start();
                                                                          
                                                                                     <div class="modal-body">
                                                                                         <p>Are you sure that you want to book an Table  ?</p>
-                                                                                        <form method="POST" action="dishes.php?res_id='.$rows['rs_id'].'" id="form-delete-user">
+                                                                                        <form method="POST"  id="form-delete-user">
                                                                                             <input type="hidden" name="id">
                                                                                         </form>
                                                                                     </div>
                                                                          
                                                                                     <div class="modal-footer">
                                                                                 
-                                                                                        <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a>';
-                                                                                        $_SESSION['id']=$rows['res_id'];
-                                                                                        echo' <a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Table</a>
+                                                                                        <a href="dishes.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">View Menu</a>
+                                                                                        <a href="table_book.php?res_id='.$rows['rs_id'].'" class="btn theme-btn-dash">Book Table</a>
                                                                                     </div>
                                                                          
                                                                                 </div>

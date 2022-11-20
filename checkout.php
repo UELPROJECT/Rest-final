@@ -21,9 +21,12 @@ if(empty($_SESSION["user_id"]))
 else{
 
 										  
+  
 												foreach ($_SESSION["cart_item"] as $item)
 												{
-											
+                                                    $ge=$_COOKIE['table_selected'];
+                                                    echo'<script>alert("Table Selected  "'.$ge.');</script>';
+
 												$item_total += ($item["price"]*$item["quantity"]);
 												
 													if($_POST['submit'])
@@ -32,6 +35,25 @@ else{
 													$SQL="insert into users_orders(u_id,title,quantity,price) values('".$_SESSION["user_id"]."','".$item["title"]."','".$item["quantity"]."','".$item["price"]."')";
 						
 														mysqli_query($db,$SQL);
+                                                        
+                                                   
+                                                    
+                                                    // while ($row=mysqli_fetch_array($t)){
+                                                    //     echo '<script>alert("DATA ARE :"'.$row['menu'].');</script>';
+                                                    //     // $i= 'INSERT INTO tbl_details (dishes_name,res_name,price,quantity,table_yes_no,username)VALUE('.$row['menu'].','.$row['title'].','.$item['price'].','.$item['quantity'].',YES,'.$row['cst_username'].');';
+                                                    //     // mysqli_query($db,$i);
+                                                    // }
+                                                    
+                                                    
+                                                    
+                                                    $q= 'SELECT r.title, r.rs_id ,SUM(c.cst_tbl_no) AS total_tbl,c.cst_username,c.rs_id ,d.title AS menu,d.rs_id FROM restaurant r, cst_tbl_book c ,dishes d WHERE r.rs_id= c.rs_id AND r.rs_id=d.rs_id GROUP BY c.cst_username;';
+                                                    $t=mysqli_query($db,$q);
+                                                    while($io=$t->fetch_field()){
+                                                        echo'<script>alert('.$io->title.');</script>';    
+                                                        echo'<script>console.log('.$io->menu.');</script>';    
+                                                    }
+                                                    $t->close();
+                                                    
 														
                                                         
                                                         unset($_SESSION["cart_item"]);
@@ -46,6 +68,7 @@ else{
 														
 													}
 												}
+                                               
 ?>
 
 
@@ -69,7 +92,7 @@ else{
             <nav class="navbar navbar-dark">
                 <div class="container">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                    <a class="navbar-brand" href="index.php"> <img class="img-rounded" src="images/food-mania-logo.png" alt=""> </a>
+                    <a class="navbar-brand" href="index.php"> YummyTummy </a>
                     <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
                         <ul class="nav navbar-nav">
                             <li class="nav-item"> <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
@@ -140,7 +163,7 @@ else{
 											   
                                                     <tr>
                                                         <td>Cart Subtotal</td>
-                                                        <td> <?php echo "₹".$item_total; ?></td>
+                                                        <td> <?php echo "£".$item_total; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Delivery Charges</td>
@@ -148,7 +171,7 @@ else{
                                                     </tr>
                                                     <tr>
                                                         <td class="text-color"><strong>Total</strong></td>
-                                                        <td class="text-color"><strong> <?php echo "₹".$item_total; ?></strong></td>
+                                                        <td class="text-color"><strong> <?php echo "£".$item_total; ?></strong></td>
                                                     </tr>
                                                 </tbody>
 												
@@ -170,7 +193,7 @@ else{
                                                     <input name="mod"  type="radio" value="paypal" disabled class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Paypal <img src="images/paypal.jpg" alt="" width="90"></span> </label>
                                             </li>
                                         </ul>
-                                        <p class="text-xs-center"> <input type="submit" onclick="return confirm('Do you want to confirm the order?');" name="submit"  class="btn btn-outline-success btn-block" value="Order now"> </p>
+                                        <p class="text-xs-center"> <input type="submit"  name="submit"  class="btn btn-outline-success btn-block" value="Order now"> </p>
                                     </div>
 									</form>
                                 </div>
@@ -206,9 +229,9 @@ else{
                                     </ul>
                                 </div>
                                 <div class="col-xs-12 col-sm-4 address color-gray">
-                                    <h5>Address</h5>
-                                    <p>213, Raheja Chambers, Free Press Journal Road, Nariman Point, Mumbai, Maharashtra 400021, India</p>
-                                    <h5>Phone: +91 8093424562</a></h5> </div>
+                                <h5>Group Project UEL</h5>
+                                    <p>Group Member are : Ravi, Darsh, Nirali and Arthai</p>
+                                    <h5><a href="https://chat.whatsapp.com/HGAlgWary6EAsl3MYp7ehj"><img  src="images/img/app.jpg"></a>Connect to our group.</h5> </div>
                                 <div class="col-xs-12 col-sm-5 additional-info color-gray">
                                     <h5>Addition informations</h5>
                                    <p>Join thousands of other restaurants who benefit from having partnered with us.</p>
