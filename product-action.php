@@ -3,6 +3,7 @@ if(!empty($_GET["action"]))
 {
 $productId = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : '';
 $quantity = isset($_POST['quantity']) ? htmlspecialchars($_POST['quantity']) : '';
+$ge=isset($_COOKIE['table_select']);
 
 switch($_GET["action"])
  {

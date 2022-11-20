@@ -133,12 +133,13 @@ foreach ($_SESSION["cart_item"] as $item)
 ?>									
 									
                                         <div class="title-row">
-										<?php echo $item["title"]; ?><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>&action=remove&id=<?php echo $item["d_id"]; ?>" >
+										<?php echo $item["title"];  ?><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>&action=remove&id=<?php echo $item["d_id"]; ?>" >
 										<i class="fa fa-trash pull-right"></i></a>
 										</div>
 										
                                         <div class="form-group row no-gutter">
                                             <div class="col-xs-8">
+                                               
                                                  <input type="text" class="form-control b-r-0" value=<?php echo "£".$item["price"]; ?> readonly id="exampleSelect1">
                                                    
                                             </div>
@@ -148,6 +149,7 @@ foreach ($_SESSION["cart_item"] as $item)
 									  </div>
 									  
 	<?php
+    
 $item_total += ($item["price"]*$item["quantity"]); 
 }
 ?>								  
@@ -161,10 +163,12 @@ $item_total += ($item["price"]*$item["quantity"]);
                              
                                 <div class="widget-body">
                                     <div class="price-wrap text-xs-center">
+                                        
                                         <p>TOTAL</p>
                                         <h3 class="value"><strong><?php echo "£".$item_total; ?></strong></h3>
                                         <p>Free Delivery!!!</p>
                                         <?php
+                                        
                                         if($item_total==0){
                                         ?>
 
@@ -211,7 +215,7 @@ $item_total += ($item["price"]*$item["quantity"]);
 									{
 									foreach($products as $product)
 										{
-						
+                                            
 													
 													 
 													 ?>
