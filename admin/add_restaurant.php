@@ -68,7 +68,7 @@ if(isset($_POST['submit']))
                                                     $gd= mysqli_query($db,$getD);
                                                     while ($r= mysqli_fetch_array($gd)){
                                                         echo "<script>alert ('INOT WHILE LOOP');</script>";    
-                                                        $q1 = "INSERT INTO add_tbl (rs_id,title)VALUE('".$r['rs_id']."','".$res_name."')";
+                                                        $q1 = "INSERT INTO add_tbl (rs_id,title,table_yes)VALUE('".$r['rs_id']."','".$res_name.",1')";
                                                         mysqli_query($db,$q1);    
                                                     }
                                                     
