@@ -31,6 +31,11 @@ else{
 												
 													if($_POST['submit'])
 													{
+                                                        $q= 'SELECT r.title, r.rs_id ,SUM(c.cst_tbl_no) AS total_tbl,c.cst_username,c.rs_id ,d.title AS menu,d.rs_id FROM restaurant r, cst_tbl_book c ,dishes d WHERE r.rs_id= c.rs_id AND r.rs_id=d.rs_id GROUP BY c.cst_username;';
+                                                        $t=mysqli_query($db,$q);
+                                                        if ($r1=mysqli_fetch_assoc($t)){
+                                                            echo 'script>alert("DAtA ARE "'.$r1['menu'].');</script>';
+                                                        }
 						
 													$SQL="insert into users_orders(u_id,title,quantity,price) values('".$_SESSION["user_id"]."','".$item["title"]."','".$item["quantity"]."','".$item["price"]."')";
 						
@@ -46,13 +51,8 @@ else{
                                                     
                                                     
                                                     
-                                                    $q= 'SELECT r.title, r.rs_id ,SUM(c.cst_tbl_no) AS total_tbl,c.cst_username,c.rs_id ,d.title AS menu,d.rs_id FROM restaurant r, cst_tbl_book c ,dishes d WHERE r.rs_id= c.rs_id AND r.rs_id=d.rs_id GROUP BY c.cst_username;';
-                                                    $t=mysqli_query($db,$q);
-                                                    while($io=$t->fetch_field()){
-                                                        echo'<script>alert('.$io->title.');</script>';    
-                                                        echo'<script>console.log('.$io->menu.');</script>';    
-                                                    }
-                                                    $t->close();
+                                                    
+                                                    
                                                     
 														
                                                         

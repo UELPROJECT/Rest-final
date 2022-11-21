@@ -194,6 +194,13 @@ session_start();
                                 <ul>
                                     <li><a href="#" class="selected" data-filter="*">all</a> </li>
 									<?php 
+                                    $q= 'SELECT r.title, r.rs_id ,SUM(c.cst_tbl_no) AS total_tbl,c.cst_username,c.rs_id ,d.title AS menu,d.rs_id FROM restaurant r, cst_tbl_book c ,dishes d WHERE r.rs_id= c.rs_id AND r.rs_id=d.rs_id GROUP BY c.cst_username;';
+                                    $t=mysqli_query($db,$q);
+                                    if ($r1=mysqli_fetch_row($t)){
+                                        echo 'script>console.log("DAtA ARE "'.$r1[0].');</script>';
+                                        echo 'script>console.log("DAtA ARE "'.$r1[1].');</script>';
+                                    } 
+
 									$res= mysqli_query($db,"select * from res_category");
 									      while($row=mysqli_fetch_array($res))
 										  {
@@ -212,7 +219,8 @@ session_start();
                     <div class="restaurant-listing">
                         
 						
-						<?php  
+						<?php 
+                        
 						$ress= mysqli_query($db,"select * from restaurant");  
 									      while($rows=mysqli_fetch_array($ress))
 										  {
