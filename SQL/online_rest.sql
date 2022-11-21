@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2021 at 09:35 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Nov 21, 2022 at 12:49 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `online_rest`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `add_tbl`
+--
+
+CREATE TABLE `add_tbl` (
+  `tbl_id` int(222) NOT NULL,
+  `rs_id` int(222) DEFAULT NULL,
+  `title` varchar(222) DEFAULT NULL,
+  `table_yes` int(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `add_tbl`
+--
+
+INSERT INTO `add_tbl` (`tbl_id`, `rs_id`, `title`, `table_yes`) VALUES
+(2, 11, 'abc', 1);
 
 -- --------------------------------------------------------
 
@@ -42,6 +62,26 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`adm_id`, `username`, `password`, `email`, `code`, `date`) VALUES
 (1, 'admin', '0192023a7bbd73250516f069df18b500', 'admin@gmail.com', '', '2021-04-07 08:40:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cst_tbl_book`
+--
+
+CREATE TABLE `cst_tbl_book` (
+  `cst_id` int(222) NOT NULL,
+  `cst_tbl_no` int(11) NOT NULL,
+  `cst_username` varchar(222) DEFAULT NULL,
+  `rs_id` int(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cst_tbl_book`
+--
+
+INSERT INTO `cst_tbl_book` (`cst_id`, `cst_tbl_no`, `cst_username`, `rs_id`) VALUES
+(64, 1, 'Salman', 11);
 
 -- --------------------------------------------------------
 
@@ -78,7 +118,8 @@ INSERT INTO `dishes` (`d_id`, `rs_id`, `title`, `slogan`, `price`, `img`) VALUES
 (13, 4, ' Buffalo Wings', 'Fried chicken wings tossed in spicy Buffalo sauce served with crisp celery sticks and Blue cheese dip.', '450.00', '606d765f69a19.jpg'),
 (14, 4, 'Mac N Cheese Bites', 'Served with our traditional spicy queso and marinara sauce.', '350.00', '606d768a1b2a1.jpg'),
 (15, 4, 'Signature Potato Twisters', 'Spiral sliced potatoes, topped with our traditional spicy queso, Monterey Jack cheese, pico de gallo, sour cream and fresh cilantro.', '320.00', '606d76ad0c0cb.jpg'),
-(16, 4, 'Meatballs Penne Pasta', 'Garlic-herb beef meatballs tossed in our house-made marinara sauce and penne pasta topped with fresh parsley.', '470.00', '606d76eedbb99.jpg');
+(16, 4, 'Meatballs Penne Pasta', 'Garlic-herb beef meatballs tossed in our house-made marinara sauce and penne pasta topped with fresh parsley.', '470.00', '606d76eedbb99.jpg'),
+(17, 11, 'fafda and gelabi', 'THIS IN INDIAN FOOD', '1.99', '6378f067d0081.jpg');
 
 -- --------------------------------------------------------
 
@@ -93,6 +134,13 @@ CREATE TABLE `remark` (
   `remark` mediumtext NOT NULL,
   `remarkDate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `remark`
+--
+
+INSERT INTO `remark` (`id`, `frm_id`, `status`, `remark`, `remarkDate`) VALUES
+(1, 1, 'in process', 'dasd', '2022-11-16 15:02:54');
 
 -- --------------------------------------------------------
 
@@ -123,7 +171,8 @@ INSERT INTO `restaurant` (`rs_id`, `c_id`, `title`, `email`, `phone`, `url`, `o_
 (1, 1, 'Gazebo', 'gazebo@gmail.com', '4312533432', 'www.gazebo.com', '12pm', '12am', 'Mon-Sat', 'Borivali', '606d71a81ec5d.jpg', '2021-04-07 09:18:19'),
 (2, 2, 'Eataly', 'eataly@gmail.com', '0557426406', 'www.eataly.com', '11am', '9pm', 'Mon-Sat', 'Goregaon', '606d720b5fc71.jpg', '2021-04-07 08:49:15'),
 (3, 3, 'Mainland China', 'mainland@china.com', '4326538776', 'www.mainlandchina.com', '8am', '9pm', 'Mon-Fri', 'Malad', '606d72653306f.jpg', '2021-04-07 08:50:45'),
-(4, 4, 'TGI Fridays', 'tgi@gmail.com', '2342353325', 'www.tgif.com', '9am', '9pm', 'Mon-Sat', 'Lower Parel', '606d72a49503a.jpg', '2021-04-07 08:51:48');
+(4, 4, 'TGI Fridays', 'tgi@gmail.com', '2342353325', 'www.tgif.com', '9am', '9pm', 'Mon-Sat', 'Lower Parel', '606d72a49503a.jpg', '2021-04-07 08:51:48'),
+(11, 1, 'abc', 'abc@gmail.com', '1234567890', 'www.abc.com', '9am', '6pm', '24hr-x7', 'wewqeq', '636ce766e3c0c.jpg', '2022-11-10 11:58:30');
 
 -- --------------------------------------------------------
 
@@ -146,6 +195,44 @@ INSERT INTO `res_category` (`c_id`, `c_name`, `date`) VALUES
 (2, 'Italian', '2021-04-07 08:45:23'),
 (3, 'Chinese', '2021-04-07 08:45:25'),
 (4, 'American', '2021-04-07 08:45:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `res_tbl`
+--
+
+CREATE TABLE `res_tbl` (
+  `res_tbl_id` int(222) NOT NULL,
+  `rs_id` int(222) DEFAULT NULL,
+  `title` varchar(222) DEFAULT NULL,
+  `tbl_no` int(222) DEFAULT NULL,
+  `tbl_book` int(222) NOT NULL,
+  `tbl_unbook` int(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `res_tbl`
+--
+
+INSERT INTO `res_tbl` (`res_tbl_id`, `rs_id`, `title`, `tbl_no`, `tbl_book`, `tbl_unbook`) VALUES
+(5, 11, 'abc', 4, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_details`
+--
+
+CREATE TABLE `tbl_details` (
+  `tbl_detail_id` int(222) NOT NULL,
+  `dishes_name` varchar(222) NOT NULL,
+  `res_name` varchar(222) NOT NULL,
+  `price` int(222) NOT NULL,
+  `quantity` int(222) NOT NULL,
+  `table_yes_no` varchar(222) NOT NULL,
+  `username` varchar(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -192,14 +279,57 @@ CREATE TABLE `users_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `users_orders`
+--
+
+INSERT INTO `users_orders` (`o_id`, `u_id`, `title`, `quantity`, `price`, `status`, `date`) VALUES
+(1, 1, 'Paneer Saag', 1, '390.00', 'in process', '2022-11-16 15:02:54'),
+(2, 1, 'Chicken Achari', 1, '250.00', NULL, '2022-11-14 15:52:47'),
+(3, 1, 'Paneer Saag', 1, '390.00', NULL, '2022-11-16 15:01:11'),
+(4, 1, 'Paneer Saag', 1, '390.00', NULL, '2022-11-16 15:02:05'),
+(5, 1, 'Cheesy Mashed Potato', 1, '250.00', NULL, '2022-11-16 15:02:05'),
+(6, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 12:11:02'),
+(7, 1, 'Vegetable Fried Rice', 1, '350.00', NULL, '2022-11-20 12:27:44'),
+(8, 1, 'Prawn Crackers', 1, '120.00', NULL, '2022-11-20 12:27:44'),
+(9, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:21:04'),
+(10, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:23:45'),
+(11, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:26:05'),
+(12, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:29:45'),
+(13, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:30:54'),
+(14, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:41:02'),
+(15, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:42:13'),
+(16, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:46:45'),
+(17, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:48:26'),
+(18, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:50:22'),
+(19, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:57:33'),
+(20, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 20:58:14'),
+(21, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 21:02:15'),
+(22, 1, 'fafda and gelabi', 1, '1.99', NULL, '2022-11-20 21:04:46'),
+(23, 1, 'fafda and gelabi', 3, '1.99', NULL, '2022-11-21 11:02:14');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `add_tbl`
+--
+ALTER TABLE `add_tbl`
+  ADD PRIMARY KEY (`tbl_id`),
+  ADD KEY `rs_id` (`rs_id`);
 
 --
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`adm_id`);
+
+--
+-- Indexes for table `cst_tbl_book`
+--
+ALTER TABLE `cst_tbl_book`
+  ADD PRIMARY KEY (`cst_id`),
+  ADD KEY `rs_id` (`rs_id`);
 
 --
 -- Indexes for table `dishes`
@@ -226,6 +356,18 @@ ALTER TABLE `res_category`
   ADD PRIMARY KEY (`c_id`);
 
 --
+-- Indexes for table `res_tbl`
+--
+ALTER TABLE `res_tbl`
+  ADD PRIMARY KEY (`res_tbl_id`);
+
+--
+-- Indexes for table `tbl_details`
+--
+ALTER TABLE `tbl_details`
+  ADD PRIMARY KEY (`tbl_detail_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -242,34 +384,58 @@ ALTER TABLE `users_orders`
 --
 
 --
+-- AUTO_INCREMENT for table `add_tbl`
+--
+ALTER TABLE `add_tbl`
+  MODIFY `tbl_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `adm_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `cst_tbl_book`
+--
+ALTER TABLE `cst_tbl_book`
+  MODIFY `cst_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
 -- AUTO_INCREMENT for table `dishes`
 --
 ALTER TABLE `dishes`
-  MODIFY `d_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `d_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `remark`
 --
 ALTER TABLE `remark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `restaurant`
 --
 ALTER TABLE `restaurant`
-  MODIFY `rs_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `rs_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `res_category`
 --
 ALTER TABLE `res_category`
   MODIFY `c_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `res_tbl`
+--
+ALTER TABLE `res_tbl`
+  MODIFY `res_tbl_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_details`
+--
+ALTER TABLE `tbl_details`
+  MODIFY `tbl_detail_id` int(222) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -281,7 +447,23 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_orders`
 --
 ALTER TABLE `users_orders`
-  MODIFY `o_id` int(222) NOT NULL AUTO_INCREMENT;
+  MODIFY `o_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `add_tbl`
+--
+ALTER TABLE `add_tbl`
+  ADD CONSTRAINT `add_tbl_ibfk_1` FOREIGN KEY (`rs_id`) REFERENCES `restaurant` (`rs_id`);
+
+--
+-- Constraints for table `cst_tbl_book`
+--
+ALTER TABLE `cst_tbl_book`
+  ADD CONSTRAINT `cst_tbl_book_ibfk_1` FOREIGN KEY (`rs_id`) REFERENCES `restaurant` (`rs_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
